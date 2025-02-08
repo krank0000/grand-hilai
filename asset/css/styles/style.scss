@@ -1,0 +1,364 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Noto Sans TC", serif;
+  background-color: rgb(254, 250, 247);
+}
+header {
+  position: fixed;
+  width: 100vw;
+  z-index: 1000;
+  // top header-----------------------------
+  div.top_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #8b7f7f;
+    color: white;
+    padding: 10px 80px;
+    div.left {
+      display: flex;
+      align-items: center;
+      i,
+      a {
+        color: white;
+        font-size: 1rem;
+        margin-right: 1.5rem;
+        text-decoration: none;
+      }
+    }
+    div.right {
+      .default {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        span {
+          font-size: 1rem;
+          margin-right: 0.5rem;
+        }
+      }
+    }
+  }
+  // main header----------------------------
+  div.main_header {
+    display: flex;
+    // flex: 2 8;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    color: black;
+    padding: 30px 80px;
+    div.left {
+      display: flex;
+      align-items: center;
+      //   菜單按鈕
+      div.menu {
+        width: 40px;
+        height: 24px;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        span.line {
+          width: 100%;
+          height: 2px;
+          background: black;
+        }
+      }
+      //   logo
+      div.logo {
+        margin-left: 80px;
+        a {
+          display: block;
+          width: 180px;
+          height: 35px;
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
+    div.right {
+      display: flex;
+      align-items: center;
+      // 主選單
+      nav {
+        ul {
+          display: flex;
+          list-style: none;
+          li {
+            margin-right: 1.5rem;
+            a {
+              text-decoration: none;
+              color: black;
+              font-size: 1rem;
+            }
+          }
+        }
+      }
+      //   訂房按鈕
+      button.bookingBtn {
+        background-color: #8b7f7f;
+        color: white;
+        border: none;
+        padding: 0.75rem 4rem;
+        cursor: pointer;
+        transition: 0.5s;
+        outline: none;
+        margin-left: 1rem;
+        &:hover {
+          background-color: white;
+          color: black;
+          outline: black 1px solid;
+        }
+      }
+    }
+  }
+}
+main {
+  // banner-------------------------------
+  section.banner {
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  // 訂房區塊-------------------------------
+  section.booking_area {
+    width: 100%;
+    background-color: #ffffff;
+    border-bottom: 1px solid rgb(230, 230, 230);
+    display: flex;
+    justify-content: space-around;
+    form {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 1rem 0;
+      font-family: "Montserrat", "Microsoft JhengHei", sans-serif;
+
+      // 標題
+      label {
+        span {
+          color: gray;
+        }
+      }
+
+      // 住房日期
+      .booking_date {
+        display: flex;
+        border-right: 1px solid gray;
+
+        .check_in,
+        .check_out {
+          display: flex;
+          flex-direction: column;
+          padding: 0 2rem;
+
+          .choose_date {
+            display: flex;
+            align-items: center;
+
+            p {
+              font-size: 2rem;
+              margin-right: 3rem;
+            }
+          }
+        }
+      }
+
+      // 人數與房數
+      .booking_people,
+      .booking_room {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 2rem;
+
+        &.booking_people {
+          border-right: 1px solid gray;
+        }
+
+        .choose_people,
+        .choose_room {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          p {
+            font-size: 2rem;
+          }
+        }
+      }
+
+      // 訂房按鈕
+      .bookingBtn {
+        background-color: white;
+        color: black;
+        border: none;
+        padding: 0.75rem 4rem;
+        cursor: pointer;
+        transition: 0.5s;
+        outline: 1px solid black;
+        margin-left: 1rem;
+      }
+    }
+  }
+  //輪播區塊-------------------------------
+  section.carousel_area {
+    transform: scale(0.9);
+    // 文字標題區
+    div.title {
+      text-align: center;
+      p {
+        padding: 150px 0;
+      }
+      .title2 {
+        position: relative;
+        width: 100vw;
+        padding-bottom: 100px;
+        overflow: hidden;
+        h1 {
+          font-family: Times, "Times New Roman", Georgia, serif;
+          color: #f6ece3;
+          font-size: calc(100vw / 25 * 1.35);
+        }
+        h2 {
+          font-size: 3rem;
+          letter-spacing: 0.25rem;
+          font-weight: 500;
+          position: absolute;
+          top: calc(100vw / 25 * 1.35 / 2);
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
+    }
+    // 輪播圖
+    div.carousel_container {
+      max-width: 100vw;
+      position: relative;
+      overflow: hidden;
+
+      .carousel::-webkit-scrollbar {
+        display: none; /* Chrome, Safari and Opera */
+      }
+
+      //   輪播項目區
+      div.carousel {
+        display: flex;
+        align-items: center;
+
+        overflow-x: scroll;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE and Edge */
+
+        // 每一個輪播項目
+        article.carousel_item {
+          margin: 0 1.5rem;
+          scroll-snap-align: start;
+          width: 100%;
+
+          &:first-child {
+            padding-left: 3rem;
+          }
+          &:last-child {
+            padding-right: 3rem;
+          }
+
+          //圖片
+          figure {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            img:hover {
+              transform: scale(1.1);
+              transition: 0.5s ease-in-out;
+            }
+          }
+          div.carousel_text {
+            display: flex;
+            align-items: center;
+            span.line {
+              display: inline-block;
+              width: 1.25rem;
+              height: 2px;
+              background: #8b7f7f;
+              margin: 0 0.75rem;
+            }
+            p {
+              font-size: 1.25rem;
+              font-weight: 400;
+              letter-spacing: 0.05rem;
+            }
+          }
+        }
+      }
+      //   輪播scrollbar
+      div.scrollbar {
+        margin-top: 100px;
+        width: 90vw;
+        height: 4px;
+        background: #ddd;
+        //置中
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        .scrollbar-thumb {
+          width: calc(100% / 6);
+          height: 100%;
+          background: #333;
+          transition: left 0.1s ease-out;
+        }
+      }
+    }
+  }
+  //房型展示-------------------------------
+  section.room_area {
+    margin: 150px 0;
+    position: relative;
+    a.room_img_link {
+      position: relative;
+      text-decoration: none;
+      cursor: pointer;
+      img {
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80vw;
+      }
+    }
+    h4 {
+      text-align: center;
+      margin-top: 2rem;
+      font-weight: normal;
+      font-size: 1.5rem;
+    }
+    a.more_room {
+      margin-top: 1.75rem;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      display: block;
+      text-decoration: none;
+      cursor: pointer;
+      p {
+        color: rgb(74, 74, 74);
+        transition: 0.5s;
+        padding: 0.25rem 0;
+        border-bottom: #000000 1px solid;
+        &:hover {
+          color: #000000;
+        }
+      }
+    }
+  }
+}

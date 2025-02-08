@@ -1,0 +1,327 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Noto Sans TC", serif;
+  background-color: rgb(254, 250, 247);
+}
+
+header {
+  position: fixed;
+  width: 100vw;
+  z-index: 1000;
+}
+header div.top_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #8b7f7f;
+  color: white;
+  padding: 10px 80px;
+}
+header div.top_header div.left {
+  display: flex;
+  align-items: center;
+}
+header div.top_header div.left i,
+header div.top_header div.left a {
+  color: white;
+  font-size: 1rem;
+  margin-right: 1.5rem;
+  text-decoration: none;
+}
+header div.top_header div.right .default {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+header div.top_header div.right .default span {
+  font-size: 1rem;
+  margin-right: 0.5rem;
+}
+header div.main_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  color: black;
+  padding: 30px 80px;
+}
+header div.main_header div.left {
+  display: flex;
+  align-items: center;
+}
+header div.main_header div.left div.menu {
+  width: 40px;
+  height: 24px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+header div.main_header div.left div.menu span.line {
+  width: 100%;
+  height: 2px;
+  background: black;
+}
+header div.main_header div.left div.logo {
+  margin-left: 80px;
+}
+header div.main_header div.left div.logo a {
+  display: block;
+  width: 180px;
+  height: 35px;
+}
+header div.main_header div.left div.logo a img {
+  width: 100%;
+  height: 100%;
+}
+header div.main_header div.right {
+  display: flex;
+  align-items: center;
+}
+header div.main_header div.right nav ul {
+  display: flex;
+  list-style: none;
+}
+header div.main_header div.right nav ul li {
+  margin-right: 1.5rem;
+}
+header div.main_header div.right nav ul li a {
+  text-decoration: none;
+  color: black;
+  font-size: 1rem;
+}
+header div.main_header div.right button.bookingBtn {
+  background-color: #8b7f7f;
+  color: white;
+  border: none;
+  padding: 0.75rem 4rem;
+  cursor: pointer;
+  transition: 0.5s;
+  outline: none;
+  margin-left: 1rem;
+}
+header div.main_header div.right button.bookingBtn:hover {
+  background-color: white;
+  color: black;
+  outline: black 1px solid;
+}
+
+main section.banner img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+main section.booking_area {
+  width: 100%;
+  background-color: #ffffff;
+  border-bottom: 1px solid rgb(230, 230, 230);
+  display: flex;
+  justify-content: space-around;
+}
+main section.booking_area form {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem 0;
+  font-family: "Montserrat", "Microsoft JhengHei", sans-serif;
+}
+main section.booking_area form label span {
+  color: gray;
+}
+main section.booking_area form .booking_date {
+  display: flex;
+  border-right: 1px solid gray;
+}
+main section.booking_area form .booking_date .check_in,
+main section.booking_area form .booking_date .check_out {
+  display: flex;
+  flex-direction: column;
+  padding: 0 2rem;
+}
+main section.booking_area form .booking_date .check_in .choose_date,
+main section.booking_area form .booking_date .check_out .choose_date {
+  display: flex;
+  align-items: center;
+}
+main section.booking_area form .booking_date .check_in .choose_date p,
+main section.booking_area form .booking_date .check_out .choose_date p {
+  font-size: 2rem;
+  margin-right: 3rem;
+}
+main section.booking_area form .booking_people,
+main section.booking_area form .booking_room {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 2rem;
+}
+main section.booking_area form .booking_people.booking_people,
+main section.booking_area form .booking_room.booking_people {
+  border-right: 1px solid gray;
+}
+main section.booking_area form .booking_people .choose_people,
+main section.booking_area form .booking_people .choose_room,
+main section.booking_area form .booking_room .choose_people,
+main section.booking_area form .booking_room .choose_room {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+main section.booking_area form .booking_people .choose_people p,
+main section.booking_area form .booking_people .choose_room p,
+main section.booking_area form .booking_room .choose_people p,
+main section.booking_area form .booking_room .choose_room p {
+  font-size: 2rem;
+}
+main section.booking_area form .bookingBtn {
+  background-color: white;
+  color: black;
+  border: none;
+  padding: 0.75rem 4rem;
+  cursor: pointer;
+  transition: 0.5s;
+  outline: 1px solid black;
+  margin-left: 1rem;
+}
+main section.carousel_area {
+  transform: scale(0.9);
+}
+main section.carousel_area div.title {
+  text-align: center;
+}
+main section.carousel_area div.title p {
+  padding: 150px 0;
+}
+main section.carousel_area div.title .title2 {
+  position: relative;
+  width: 100vw;
+  padding-bottom: 100px;
+  overflow: hidden;
+}
+main section.carousel_area div.title .title2 h1 {
+  font-family: Times, "Times New Roman", Georgia, serif;
+  color: #f6ece3;
+  font-size: 5.4vw;
+}
+main section.carousel_area div.title .title2 h2 {
+  font-size: 3rem;
+  letter-spacing: 0.25rem;
+  font-weight: 500;
+  position: absolute;
+  top: 2.7vw;
+  left: 50%;
+  transform: translateX(-50%);
+}
+main section.carousel_area div.carousel_container {
+  max-width: 100vw;
+  position: relative;
+  overflow: hidden;
+}
+main section.carousel_area div.carousel_container .carousel::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+main section.carousel_area div.carousel_container div.carousel {
+  display: flex;
+  align-items: center;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+main section.carousel_area div.carousel_container div.carousel article.carousel_item {
+  margin: 0 1.5rem;
+  scroll-snap-align: start;
+  width: 100%;
+}
+main section.carousel_area div.carousel_container div.carousel article.carousel_item:first-child {
+  padding-left: 3rem;
+}
+main section.carousel_area div.carousel_container div.carousel article.carousel_item:last-child {
+  padding-right: 3rem;
+}
+main section.carousel_area div.carousel_container div.carousel article.carousel_item figure {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+main section.carousel_area div.carousel_container div.carousel article.carousel_item figure img:hover {
+  transform: scale(1.1);
+  transition: 0.5s ease-in-out;
+}
+main section.carousel_area div.carousel_container div.carousel article.carousel_item div.carousel_text {
+  display: flex;
+  align-items: center;
+}
+main section.carousel_area div.carousel_container div.carousel article.carousel_item div.carousel_text span.line {
+  display: inline-block;
+  width: 1.25rem;
+  height: 2px;
+  background: #8b7f7f;
+  margin: 0 0.75rem;
+}
+main section.carousel_area div.carousel_container div.carousel article.carousel_item div.carousel_text p {
+  font-size: 1.25rem;
+  font-weight: 400;
+  letter-spacing: 0.05rem;
+}
+main section.carousel_area div.carousel_container div.scrollbar {
+  margin-top: 100px;
+  width: 90vw;
+  height: 4px;
+  background: #ddd;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+main section.carousel_area div.carousel_container div.scrollbar .scrollbar-thumb {
+  width: 16.6666666667%;
+  height: 100%;
+  background: #333;
+  transition: left 0.1s ease-out;
+}
+main section.room_area {
+  margin: 150px 0;
+  position: relative;
+}
+main section.room_area a.room_img_link {
+  position: relative;
+  text-decoration: none;
+  cursor: pointer;
+}
+main section.room_area a.room_img_link img {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80vw;
+}
+main section.room_area h4 {
+  text-align: center;
+  margin-top: 2rem;
+  font-weight: normal;
+  font-size: 1.5rem;
+}
+main section.room_area a.more_room {
+  margin-top: 1.75rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+}
+main section.room_area a.more_room p {
+  color: rgb(74, 74, 74);
+  transition: 0.5s;
+  padding: 0.25rem 0;
+  border-bottom: #000000 1px solid;
+}
+main section.room_area a.more_room p:hover {
+  color: #000000;
+}/*# sourceMappingURL=style.css.map */
