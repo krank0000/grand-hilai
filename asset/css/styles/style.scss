@@ -277,11 +277,14 @@ main {
           //圖片
           figure {
             width: 100%;
-            height: 100%;
+            height: 550px;
             overflow: hidden;
-            img:hover {
-              transform: scale(1.1);
+            img {
               transition: 0.5s ease-in-out;
+              &:hover {
+                transform: scale(1.1);
+                filter: brightness(0.7); //圖片變暗
+              }
             }
           }
           div.carousel_text {
@@ -359,6 +362,181 @@ main {
           color: #000000;
         }
       }
+    }
+  }
+  //設施展示-------------------------------
+  section.facility_area {
+    margin: 150px 0;
+    display: flex;
+    justify-content: space-around;
+    padding: 0 5vw;
+    a.facility_item {
+      width: 31%;
+      height: 100%;
+      text-decoration: none;
+
+      figure {
+        width: 100%;
+        height: 450px;
+        overflow: hidden;
+        img {
+          transition: 0.5s ease-in-out;
+          &:hover {
+            transform: scale(1.1);
+            filter: brightness(0.7); //圖片變暗
+          }
+        }
+      }
+      h3 {
+        margin: 1.5rem 0;
+        font-weight: normal;
+        font-size: 1.5rem;
+        text-align: center;
+        color: black;
+      }
+      div.line_area {
+        border-top: 1px solid #e0e0e0;
+        display: flex;
+        justify-content: center;
+        .line {
+          width: 3rem;
+          height: 3px;
+          background: #cb9d70;
+        }
+      }
+      p {
+        margin-top: 1rem;
+        color: rgb(101, 101, 101);
+        font-weight: 350;
+        font-size: 0.9rem;
+        letter-spacing: 0.05rem;
+        line-height: 1.75rem;
+      }
+      div.more {
+        display: inline-block;
+        p {
+          padding: 0.15rem 0;
+          border-bottom: #333 1px solid;
+        }
+      }
+    }
+  }
+  //策畫行程-------------------------------
+  section.journey_area {
+    padding-bottom: 150px;
+    // 背景圖
+    background-image: url("../../img/travel_BG.png");
+    background-repeat: no-repeat; /* 禁止背景圖片重複 */
+    background-position: bottom;
+    // 標題
+    div.title_area {
+      text-align: center;
+      padding: 130px 0 90px 0;
+      p {
+        font-family: "Times New Roman", Times, serif;
+        color: #d7a070;
+      }
+      h1 {
+        font-size: 3rem;
+      }
+    }
+    // 行程區
+    div.journey_container {
+      padding-bottom: 100px;
+      div.journey_area {
+        // 項目區
+        div.journey {
+          position: relative;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 90vw;
+          height: 500px;
+          display: flex;
+          transform-origin: center;
+          // 每一個項目
+          article.journey_item {
+            position: relative;
+            overflow: hidden;
+            width: calc(90vw / 4 - 1.5rem);
+            height: 430px;
+            margin: 0 1.5rem;
+
+            // 圖片
+            img {
+              width: 350px;
+              height: 500px;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+            }
+            // 文字
+            div.journey_text {
+              position: absolute;
+              bottom: 0;
+              color: white;
+              padding: 1.75rem 1.5rem;
+              div.text_top {
+                i {
+                  margin-right: 0.5rem;
+                }
+              }
+              h4 {
+                font-size: 1.25rem;
+                margin-top: 0.25rem;
+              }
+            }
+
+            transition: 0.5s ease-in-out;
+            // 滑鼠移入效果
+            &:hover {
+              height: 500px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+footer {
+  background: url("../../img/footer_BG.jpg");
+  padding: 80px;
+  //公司資訊-------------------------------
+  section.information_area {
+    border-bottom: #565656 1px solid;
+    padding: 50px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    div.information {
+      color: rgb(104, 104, 104);
+      padding-right: 20vw;
+      p {
+        padding: 0.5rem 0;
+      }
+    }
+    a {
+      color: white;
+    }
+  }
+  //導覽nav--------------------------------
+  section.nav_area {
+  }
+  //隱私權政策-----------------------------
+  section.privacy_area {
+    margin-top: 20px;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    a,
+    p {
+      color: rgb(104, 104, 104);
+      text-decoration: none;
+      transition: 0.3s ease-in-out;
+    }
+    a:hover {
+      color: #ffffff;
     }
   }
 }
