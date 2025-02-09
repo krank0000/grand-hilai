@@ -714,12 +714,12 @@ footer {
 
 // 菜單展開-----------------------------------------------
 main.menu {
-  // position: fixed;
+  position: fixed;
   top: 0;
   z-index: 100;
-  right: 0;
+  right: -100%;
   .menu_container {
-    width: 100vw;
+    width: 98.9vw;
     height: 100vh;
     padding: 50px;
     // 背景圖
@@ -780,12 +780,99 @@ main.menu {
     //主選單---------------------------------
     main {
       display: flex;
-      height: 60vh;
+      justify-content: space-between;
+      align-items: center;
+      height: 70vh;
+      padding: 50px;
       // 主選單 標題-------
-      nav {
+      nav.menu_title {
+        width: 30%;
+        ol {
+          list-style: none;
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+          li {
+            margin: 0.25rem 0;
+            width: 100%;
+            span {
+              display: inline-block;
+              width: 30px;
+              text-align: center;
+              font-family: serif;
+            }
+            a {
+              text-decoration: none;
+              color: black;
+              font-size: 1.25rem;
+              transition: 0.3s ease-in-out;
+              padding: 0 3rem;
+            }
+            //hover效果
+            &:hover {
+              a {
+                color: #cb9d70;
+              }
+            }
+          }
+        }
       }
       // 主選單 顯示資訊-------
-      nav {
+      nav.menu_info {
+        width: 30%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        position: relative;
+        ol {
+          list-style: none;
+          li.menu_info_item {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            ul {
+              li {
+                list-style: none;
+                a {
+                  color: rgb(118, 118, 118);
+                  text-decoration: none;
+                  display: block;
+                  padding: 0.25rem 0;
+                  font-size: small;
+                  transition: 0.3s ease-in-out;
+                  &:hover {
+                    color: #000000;
+                  }
+                  &::before {
+                    content: "- ";
+                    margin-right: 0.25rem;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      //主選單顯示圖片---------
+      nav.menu_img {
+        width: 40%;
+        position: relative;
+        ol {
+          list-style: none;
+          li {
+            display: none;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 0;
+            img {
+              width: 300px;
+            }
+          }
+        }
       }
     }
     //訂房按鈕-------------------------------

@@ -72,3 +72,58 @@ carousel.addEventListener("scroll", () => {
 });
 
 */
+
+//菜單展開後，滑鼠移動顯示細項===========================================================================
+$(document).ready(function () {
+  var activeItem = null;
+  var activeImage = null;
+
+  // 當滑鼠移入 menu_title 的 <li> 時
+  $(".menu_title li").hover(function () {
+    var index = $(this).index(); // 取得當前 <li> 的索引
+    activeItem = $(".menu_info .menu_info_item").eq(index); // 找到對應的 menu_info_item
+    activeImage = $(".menu_img li").eq(index);
+
+    // 隱藏所有 menu_info_item 和 menu_img li，然後顯示對應的項目並加入動畫
+    $(".menu_info .menu_info_item, .menu_img li").stop(true, true).fadeOut(200);
+    activeItem
+      .css({ position: "absolute", right: "-20px", opacity: 0 })
+      .show()
+      .animate({ right: "0px", opacity: 1 }, 300);
+    activeImage.fadeIn(300);
+  });
+
+  // 當滑鼠移入 menu_info 本體時，確保它不會立即消失
+  $(".menu_info, .menu_img").hover(
+    function () {
+      if (activeItem) {
+        activeItem.stop(true, true).show();
+      }
+      if (activeImage) {
+        activeImage.stop(true, true).show();
+      }
+    },
+    // 當滑鼠移出 menu_info 時，才隱藏當前的 menu_info_item 和 menu_img li
+    function () {
+      if (activeItem) {
+        activeItem.stop(true, true).fadeOut(200);
+      }
+      if (activeImage) {
+        activeImage.stop(true, true).fadeOut(200);
+      }
+    }
+  );
+});
+
+//菜單開關===========================================================================
+$(document).ready(function () {
+  $("#menu").css({ right: "-100%" }); // 初始狀態關閉
+
+  $("#menuBtn").click(function () {
+    $("#menu").animate({ right: "0" }, 500);
+  });
+
+  $("#closeBtn").click(function () {
+    $("#menu").animate({ right: "-100%" }, 500);
+  });
+});

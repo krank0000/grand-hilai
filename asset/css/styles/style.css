@@ -629,12 +629,13 @@ footer section.privacy_area a:hover {
 }
 
 main.menu {
+  position: fixed;
   top: 0;
   z-index: 100;
-  right: 0;
+  right: -100%;
 }
 main.menu .menu_container {
-  width: 100vw;
+  width: 98.9vw;
   height: 100vh;
   padding: 50px;
   background: url("../../img/slideMenu_BG.jpg");
@@ -686,7 +687,91 @@ main.menu .menu_container .top_btn_area .languageBtn .language a {
 }
 main.menu .menu_container main {
   display: flex;
-  height: 60vh;
+  justify-content: space-between;
+  align-items: center;
+  height: 70vh;
+  padding: 50px;
+}
+main.menu .menu_container main nav.menu_title {
+  width: 30%;
+}
+main.menu .menu_container main nav.menu_title ol {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+main.menu .menu_container main nav.menu_title ol li {
+  margin: 0.25rem 0;
+  width: 100%;
+}
+main.menu .menu_container main nav.menu_title ol li span {
+  display: inline-block;
+  width: 30px;
+  text-align: center;
+  font-family: serif;
+}
+main.menu .menu_container main nav.menu_title ol li a {
+  text-decoration: none;
+  color: black;
+  font-size: 1.25rem;
+  transition: 0.3s ease-in-out;
+  padding: 0 3rem;
+}
+main.menu .menu_container main nav.menu_title ol li:hover a {
+  color: #cb9d70;
+}
+main.menu .menu_container main nav.menu_info {
+  width: 30%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+}
+main.menu .menu_container main nav.menu_info ol {
+  list-style: none;
+}
+main.menu .menu_container main nav.menu_info ol li.menu_info_item {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+main.menu .menu_container main nav.menu_info ol li.menu_info_item ul li {
+  list-style: none;
+}
+main.menu .menu_container main nav.menu_info ol li.menu_info_item ul li a {
+  color: rgb(118, 118, 118);
+  text-decoration: none;
+  display: block;
+  padding: 0.25rem 0;
+  font-size: small;
+  transition: 0.3s ease-in-out;
+}
+main.menu .menu_container main nav.menu_info ol li.menu_info_item ul li a:hover {
+  color: #000000;
+}
+main.menu .menu_container main nav.menu_info ol li.menu_info_item ul li a::before {
+  content: "- ";
+  margin-right: 0.25rem;
+}
+main.menu .menu_container main nav.menu_img {
+  width: 40%;
+  position: relative;
+}
+main.menu .menu_container main nav.menu_img ol {
+  list-style: none;
+}
+main.menu .menu_container main nav.menu_img ol li {
+  display: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+}
+main.menu .menu_container main nav.menu_img ol li img {
+  width: 300px;
 }
 main.menu .menu_container .bookingBtn {
   display: flex;
