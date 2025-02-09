@@ -427,7 +427,7 @@ main {
         left: 50%;
         transform: translateX(-50%);
         .scrollbar-thumb {
-          width: calc(100% / 6);
+          width: calc(100% / 6 * 4);
           height: 100%;
           background: #333;
           transition: left 0.1s ease-out;
@@ -918,6 +918,23 @@ main.menu {
           }
         }
       }
+    }
+  }
+}
+
+//下方固定[立即訂房]按鈕-----------------------------------
+div.fixed_booking {
+  // display: none;
+  position: fixed;
+  bottom: 10px;
+  right: 30px;
+  a {
+    background-color: #cb9d70;
+    text-decoration: none;
+    color: white;
+    padding: 0.75rem 2rem;
+    i {
+      margin-left: 1.5rem;
     }
   }
 }

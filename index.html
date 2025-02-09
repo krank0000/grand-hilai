@@ -803,7 +803,26 @@
         </div>
       </div>
     </main>
-
+    <!-- 下方固定[立即訂房]按鈕 -->
+    <div class="fixed_booking">
+      <a href="">
+        <span>立即訂房</span>
+        <span>Reservation</span>
+        <i class="fa-solid fa-chevron-up"></i>
+      </a>
+    </div>
+    <script>
+      $(document).ready(function () {
+        // 捲軸偵測距離頂部超過 500 才顯示 .fixed_booking
+        $(window).scroll(function () {
+          if ($(this).scrollTop() > 500) {
+            $(".fixed_booking").fadeIn();
+          } else {
+            $(".fixed_booking").fadeOut();
+          }
+        });
+      });
+    </script>
     <!-- JS ------------------------------------------------------>
     <script src="./asset/js/index.js"></script>
   </body>
