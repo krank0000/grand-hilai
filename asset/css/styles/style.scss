@@ -11,7 +11,8 @@ body {
 header {
   position: fixed;
   width: 100vw;
-  z-index: 1000;
+  z-index: 10;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
   // top header-----------------------------
   div.top_header {
     display: flex;
@@ -32,13 +33,28 @@ header {
       }
     }
     div.right {
-      .default {
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-        span {
-          font-size: 1rem;
-          margin-right: 0.5rem;
+      // 語言選擇
+      div.languageBtn {
+        .default {
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+          span {
+            font-size: 1rem;
+            margin-right: 0.5rem;
+          }
+        }
+      }
+      // 語言選單(點擊後顯示)
+      div.language {
+        position: fixed;
+        right: 60px;
+        top: 0px; //預設往上隱藏
+        background-color: #f7f7f7;
+        a {
+          text-decoration: none;
+          color: black;
+          padding: 0.5rem 45px;
         }
       }
     }
@@ -62,11 +78,42 @@ header {
         cursor: pointer;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: center;
+        position: relative;
         span.line {
+          position: absolute;
           width: 100%;
           height: 2px;
           background: black;
+          transition: 0.5s ease-in-out;
+        }
+        span.line::before {
+          content: "";
+          position: absolute;
+          width: 50%;
+          height: 1.5px;
+          background: black;
+          top: -10px;
+          left: 0;
+          transition: 0.5s ease-in-out;
+        }
+        span.line::after {
+          content: "";
+          position: absolute;
+          width: 50%;
+          height: 2px;
+          background: black;
+          top: 10px;
+          right: 0;
+          transition: 0.5s ease-in-out;
+        }
+
+        //hover效果
+        &:hover span.line {
+          &::before,
+          &::after {
+            width: 100%;
+          }
         }
       }
       //   logo
@@ -97,6 +144,30 @@ header {
               text-decoration: none;
               color: black;
               font-size: 1rem;
+            }
+            //下划線
+            div.line_area {
+              margin-top: 0.25rem;
+              position: relative;
+              width: 100%;
+              height: 2px;
+              div.line {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 0%;
+                height: 100%;
+                background: #cb9d70;
+                transition: 0.5s ease-in-out;
+              }
+            }
+            //hover效果
+            &:hover {
+              div.line_area {
+                div.line {
+                  width: 100%;
+                }
+              }
             }
           }
         }
@@ -164,11 +235,24 @@ main {
           .choose_date {
             display: flex;
             align-items: center;
+            position: relative;
 
             p {
               font-size: 2rem;
               margin-right: 3rem;
             }
+            i {
+              cursor: pointer;
+            }
+          }
+          //隱藏原生 date input
+          .choose_date input {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+            //改變位置
+            top: 0;
           }
         }
       }
@@ -195,6 +279,9 @@ main {
           p {
             font-size: 2rem;
           }
+          i {
+            cursor: pointer;
+          }
         }
       }
 
@@ -219,6 +306,7 @@ main {
       text-align: center;
       p {
         padding: 150px 0;
+        color: #5c5c5c;
       }
       .title2 {
         position: relative;
@@ -288,19 +376,42 @@ main {
             }
           }
           div.carousel_text {
+            margin-top: 1.5rem;
             display: flex;
             align-items: center;
-            span.line {
-              display: inline-block;
-              width: 1.25rem;
+            div.line_area {
+              width: 1.5rem;
               height: 2px;
-              background: #8b7f7f;
               margin: 0 0.75rem;
+              display: flex;
+              align-items: center;
+              span.line {
+                display: inline-block;
+                width: 70%;
+                height: 100%;
+                background: #cb9d70;
+                transition: 0.5s ease-in-out;
+              }
             }
             p {
               font-size: 1.25rem;
               font-weight: 400;
               letter-spacing: 0.05rem;
+              transition: 0.5s ease-in-out;
+            }
+          }
+        }
+        //hover效果
+        article.carousel_item {
+          //直屬選擇器 A:hover > B
+          &:hover > div.carousel_text {
+            p {
+              color: #cb9d70;
+            }
+            div.line_area {
+              span.line {
+                width: 100%;
+              }
             }
           }
         }
@@ -369,17 +480,19 @@ main {
     margin: 150px 0;
     display: flex;
     justify-content: space-around;
-    padding: 0 5vw;
+    padding: 0 80px;
     a.facility_item {
-      width: 31%;
+      width: 380px;
       height: 100%;
       text-decoration: none;
-
+      padding: 0 1rem;
+      //圖片
       figure {
-        width: 100%;
-        height: 450px;
+        height: 420px;
         overflow: hidden;
         img {
+          width: 100%;
+          height: 100%;
           transition: 0.5s ease-in-out;
           &:hover {
             transform: scale(1.1);
@@ -388,9 +501,10 @@ main {
         }
       }
       h3 {
+        transition: 0.5s ease-in-out;
         margin: 1.5rem 0;
         font-weight: normal;
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         text-align: center;
         color: black;
       }
@@ -417,7 +531,18 @@ main {
         p {
           padding: 0.15rem 0;
           border-bottom: #333 1px solid;
+          transition: 0.5s ease-in-out;
+          &:hover {
+            color: #000000;
+          }
         }
+      }
+    }
+    //hover效果
+    a.facility_item {
+      //直屬選擇器 A:hover > B
+      &:hover > h3 {
+        color: #cb9d70;
       }
     }
   }
@@ -452,7 +577,8 @@ main {
           width: 90vw;
           height: 500px;
           display: flex;
-          transform-origin: center;
+          align-items: center; //垂直置中(hover從中間展開)
+
           // 每一個項目
           article.journey_item {
             position: relative;
@@ -462,13 +588,15 @@ main {
             margin: 0 1.5rem;
 
             // 圖片
-            img {
-              width: 350px;
-              height: 500px;
-              position: absolute;
-              top: 50%;
-              left: 50%;
-              transform: translate(-50%, -50%);
+            a {
+              img {
+                width: 350px;
+                height: 500px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+              }
             }
             // 文字
             div.journey_text {
@@ -500,6 +628,7 @@ main {
 }
 footer {
   background: url("../../img/footer_BG.jpg");
+  background-repeat: no-repeat;
   padding: 80px;
   //公司資訊-------------------------------
   section.information_area {
@@ -521,6 +650,48 @@ footer {
   }
   //導覽nav--------------------------------
   section.nav_area {
+    padding: 80px 0 100px 0;
+    border-bottom: #565656 1px solid;
+    nav {
+      ul.nav {
+        display: flex;
+        justify-content: space-between;
+        li.nav_list {
+          list-style: none;
+          a.nav_title {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            letter-spacing: 0.15rem;
+            transition: 0.4s ease-in-out;
+            &:hover {
+              color: #cb9d70;
+            }
+          }
+          ul {
+            margin-top: 1rem;
+            li {
+              list-style: none;
+              a {
+                color: rgb(118, 118, 118);
+                text-decoration: none;
+                display: block;
+                padding: 0.25rem 0;
+                font-size: small;
+                transition: 0.3s ease-in-out;
+                &:hover {
+                  color: #ffffff;
+                }
+                &::before {
+                  content: "- ";
+                  margin-right: 0.25rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
   //隱私權政策-----------------------------
   section.privacy_area {
@@ -537,6 +708,129 @@ footer {
     }
     a:hover {
       color: #ffffff;
+    }
+  }
+}
+
+// 菜單展開-----------------------------------------------
+main.menu {
+  // position: fixed;
+  top: 0;
+  z-index: 100;
+  right: 0;
+  .menu_container {
+    width: 100vw;
+    height: 100vh;
+    padding: 50px;
+    // 背景圖
+    background: url("../../img/slideMenu_BG.jpg");
+    background-repeat: no-repeat;
+    background-size: 110% 100%;
+    background-position: left;
+
+    //上方按鈕-------------------------------
+    .top_btn_area {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      //關閉按鈕
+      .closeBtn {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        transition: 0.5s ease-in-out;
+        span {
+          font-size: 0.75rem;
+        }
+        i {
+          font-size: 2rem;
+          margin-left: 1rem;
+        }
+        &:hover {
+          color: #cb9d70;
+        }
+      }
+      //語言切換
+      .languageBtn {
+        // 預設顯示
+        .default {
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+          span {
+            font-size: 1rem;
+            margin-right: 0.5rem;
+          }
+        }
+        //點擊後顯示
+        .language {
+          display: none;
+          position: absolute;
+          right: -20px;
+          top: 0px; //預設往上隱藏
+          background-color: #f7f7f7;
+          a {
+            text-decoration: none;
+            color: black;
+            padding: 0.5rem 45px;
+          }
+        }
+      }
+    }
+    //主選單---------------------------------
+    main {
+      display: flex;
+      height: 60vh;
+      // 主選單 標題-------
+      nav {
+      }
+      // 主選單 顯示資訊-------
+      nav {
+      }
+    }
+    //訂房按鈕-------------------------------
+    .bookingBtn {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 250px;
+      border: #c8c8c8 1px solid;
+      padding: 0.75rem 1rem;
+      transition: 0.5s ease-in-out;
+      .left {
+        display: flex;
+        align-items: center;
+        i {
+          margin-right: 0.75rem;
+          color: #cb9d70;
+          transition: 0.5s ease-in-out;
+        }
+        span {
+          font-family: serif;
+          font-size: 0.75rem;
+          padding-top: 0.5rem;
+          margin-left: 0.5rem;
+        }
+      }
+      .right {
+        i {
+          margin-right: 0.5rem;
+          transition: 0.5s ease-in-out;
+        }
+      }
+      //hover效果
+      &:hover {
+        background-color: #cb9d70;
+        color: white;
+        i {
+          color: white;
+        }
+        .right {
+          i {
+            margin-right: 0;
+          }
+        }
+      }
     }
   }
 }

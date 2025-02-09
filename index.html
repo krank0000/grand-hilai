@@ -34,6 +34,8 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap"
       rel="stylesheet"
     />
+    <!-- jQuery -->
+    <script src="./asset/js/jquery-3.7.1.min.js"></script>
   </head>
   <body>
     <header>
@@ -51,16 +53,57 @@
               <i class="fa-solid fa-chevron-down"></i>
             </div>
           </div>
+          <div class="language" style="display: none">
+            <a href="">繁</a>
+          </div>
         </div>
+        <!-- 語言切換jQuery -->
+        <script>
+          $(document).ready(function () {
+            $(".languageBtn").click(function () {
+              let langMenu = $(".language");
+
+              if (langMenu.is(":visible")) {
+                // 如果已經顯示，則執行淡出 + 上移
+                langMenu.stop(true, true).animate(
+                  {
+                    opacity: 0,
+                    top: "0px",
+                  },
+                  500,
+                  function () {
+                    $(this).hide();
+                  }
+                );
+              } else {
+                // 先設置初始位置，再淡入 + 下移
+                langMenu
+                  .css({
+                    display: "flex",
+                    opacity: 0,
+                    top: "0px",
+                  })
+                  .stop(true, true)
+                  .animate(
+                    {
+                      opacity: 1,
+                      top: "40px",
+                    },
+                    500
+                  );
+              }
+            });
+          });
+        </script>
       </div>
       <!-- 主選單 header-->
       <div class="main_header">
         <div class="left">
           <!-- 菜單按鈕 -->
           <div class="menu">
+            <!-- <span class="line"></span> -->
             <span class="line"></span>
-            <span class="line"></span>
-            <span class="line"></span>
+            <!-- <span class="line"></span> -->
           </div>
           <!-- logo -->
           <div class="logo">
@@ -77,21 +120,39 @@
             <ul>
               <li>
                 <a href="">客房</a>
+                <div class="line_area">
+                  <div class="line"></div>
+                </div>
               </li>
               <li>
                 <a href="">餐飲</a>
+                <div class="line_area">
+                  <div class="line"></div>
+                </div>
               </li>
               <li>
                 <a href="">設施</a>
+                <div class="line_area">
+                  <div class="line"></div>
+                </div>
               </li>
               <li>
                 <a href="">行程</a>
+                <div class="line_area">
+                  <div class="line"></div>
+                </div>
               </li>
               <li>
                 <a href="">婚宴會議</a>
+                <div class="line_area">
+                  <div class="line"></div>
+                </div>
               </li>
               <li>
                 <a href="">優惠</a>
+                <div class="line_area">
+                  <div class="line"></div>
+                </div>
               </li>
             </ul>
           </nav>
@@ -120,8 +181,16 @@
               <label for="check_in">入住日期 <span>Check in</span></label>
               <!-- 日期 -->
               <div class="choose_date">
-                <p>2025.02.21</p>
-                <i class="fa-solid fa-calendar-days"></i>
+                <p id="checkInDate">2025.02.21</p>
+                <i
+                  class="fa-solid fa-calendar-days"
+                  onclick="openDatePicker('checkInInput')"
+                ></i>
+                <input
+                  type="date"
+                  id="checkInInput"
+                  onchange="updateDate('checkInDate', this.value)"
+                />
               </div>
             </div>
             <!-- 退房日期 -->
@@ -129,31 +198,81 @@
               <label for="check_out">退房日期 <span>Check out</span></label>
               <!-- 日期 -->
               <div class="choose_date">
-                <p>2025.02.22</p>
-                <i class="fa-solid fa-calendar-days"></i>
+                <p id="checkOutDate">2025.02.22</p>
+                <i
+                  class="fa-solid fa-calendar-days"
+                  onclick="openDatePicker('checkOutInput')"
+                ></i>
+                <input
+                  type="date"
+                  id="checkOutInput"
+                  onchange="updateDate('checkOutDate', this.value)"
+                />
               </div>
             </div>
           </div>
+          <!-- 日期選擇JS -->
+          <script>
+            // 當點擊日曆圖示時，開啟對應的日期選擇器
+            function openDatePicker(inputId) {
+              // 取得對應的 <input type="date"> 元素，並顯示日期選擇器
+              document.getElementById(inputId).showPicker();
+            }
+            // 當用戶選擇日期後，更新對應的 <p> 標籤內容
+            function updateDate(displayId, value) {
+              if (value) {
+                // 格式化日期，將 YYYY-MM-DD 轉換成 YYYY.MM.DD
+                let formattedDate = value.replace(/-/g, ".");
+                // 更新指定的 <p> 標籤，使其顯示新的日期
+                document.getElementById(displayId).textContent = formattedDate;
+              }
+            }
+          </script>
           <!-- 人數 -->
           <div class="booking_people">
-            <label for="">入住人數 <span>Guest</span></label>
+            <label>入住人數 <span>Guest</span></label>
             <div class="choose_people">
-              <i class="fa-solid fa-minus"></i>
-              <p>2</p>
-              <i class="fa-solid fa-plus"></i>
+              <i
+                class="fa-solid fa-minus"
+                onclick="updateValue('guest', -1)"
+              ></i>
+              <p id="guestCount">2</p>
+              <i class="fa-solid fa-plus" onclick="updateValue('guest', 1)"></i>
             </div>
           </div>
           <!-- 房數 -->
           <div class="booking_room">
-            <label for="">入住房數 <span>Room</span></label>
+            <label>入住房數 <span>Room</span></label>
             <div class="choose_room">
-              <i class="fa-solid fa-minus"></i>
-              <p>1</p>
-              <i class="fa-solid fa-plus"></i>
+              <i
+                class="fa-solid fa-minus"
+                onclick="updateValue('room', -1)"
+              ></i>
+              <p id="roomCount">1</p>
+              <i class="fa-solid fa-plus" onclick="updateValue('room', 1)"></i>
             </div>
           </div>
+          <!-- 人數、房數選擇JS -->
+          <script>
+            function updateValue(type, change) {
+              // 獲取對應的元素
+              let countElement = document.getElementById(
+                type === "guest" ? "guestCount" : "roomCount"
+              );
+              let currentValue = parseInt(countElement.textContent);
+
+              // 計算新的數值
+              let newValue = currentValue + change;
+
+              // 限制最小值為 1（不可為 0 或負數）
+              if (newValue >= 1) {
+                countElement.textContent = newValue;
+              }
+            }
+          </script>
+
           <!-- 訂房按鈕 -->
-          <button class="bookingBtn">
+          <button class="bookingBtn" onclick="event.preventDefault();">
             <span>立即訂房</span>
           </button>
         </form>
@@ -184,7 +303,7 @@
                 />
               </figure>
               <div class="carousel_text">
-                <span class="line"></span>
+                <div class="line_area"><span class="line"></span></div>
                 <p>獨擁絕美湖景</p>
               </div>
             </article>
@@ -196,7 +315,7 @@
                 />
               </figure>
               <div class="carousel_text">
-                <span class="line"></span>
+                <div class="line_area"><span class="line"></span></div>
                 <p>湖畔餐飲饗宴</p>
               </div>
             </article>
@@ -208,7 +327,7 @@
                 />
               </figure>
               <div class="carousel_text">
-                <span class="line"></span>
+                <div class="line_area"><span class="line"></span></div>
                 <p>療癒奢逸溫泉</p>
               </div>
             </article>
@@ -220,7 +339,7 @@
                 />
               </figure>
               <div class="carousel_text">
-                <span class="line"></span>
+                <div class="line_area"><span class="line"></span></div>
                 <p>獨家體驗行程</p>
               </div>
             </article>
@@ -232,7 +351,7 @@
                 />
               </figure>
               <div class="carousel_text">
-                <span class="line"></span>
+                <div class="line_area"><span class="line"></span></div>
                 <p>藝術文化共生</p>
               </div>
             </article>
@@ -244,7 +363,7 @@
                 />
               </figure>
               <div class="carousel_text">
-                <span class="line"></span>
+                <div class="line_area"><span class="line"></span></div>
                 <p>尊榮款待服務</p>
               </div>
             </article>
@@ -444,14 +563,79 @@
         <div class="information">
           <p>地址: 南投縣魚池鄉中興路139號</p>
           <p>信箱: service_ntc@grand-hilai.com</p>
-          <p>Tel: +886-49-221-2188｜Fax: +886-49-234-3177</p>
+          <p>Tel: +886-49-221-2188&ensp;&#124;&ensp;Fax: +886-49-234-3177</p>
         </div>
         <a href="">
           <i class="fa-brands fa-facebook-f"></i>
         </a>
       </section>
       <!-- 導覽nav -->
-      <section class="nav_area"></section>
+      <section class="nav_area">
+        <nav>
+          <ul class="nav">
+            <li class="nav_list">
+              <a href="" class="nav_title">關於我們</a>
+              <ul>
+                <li><a href="">關於漢來日月行館</a></li>
+              </ul>
+            </li>
+            <li class="nav_list">
+              <a href="" class="nav_title">最新消息</a>
+              <ul>
+                <li><a href="">活動消息</a></li>
+                <li><a href="">行館公告</a></li>
+              </ul>
+            </li>
+            <li class="nav_list">
+              <a href="" class="nav_title">客房介紹</a>
+              <ul>
+                <li><a href="">精緻客房 B</a></li>
+                <li><a href="">精緻客房 A</a></li>
+                <li><a href="">豪華湖景客房 B</a></li>
+                <li><a href="">豪華湖景客房 A</a></li>
+                <li><a href="">庭園客房</a></li>
+                <li><a href="">貴賓套房</a></li>
+                <li><a href="">豪華套房</a></li>
+                <li><a href="">日月套房</a></li>
+                <li><a href="">專案優惠</a></li>
+              </ul>
+            </li>
+            <li class="nav_list">
+              <a href="" class="nav_title">餐飲服務</a>
+              <ul>
+                <li><a href="">四季</a></li>
+                <li><a href="">日月軒</a></li>
+                <li><a href="">星空酒廊</a></li>
+              </ul>
+            </li>
+            <li class="nav_list">
+              <a href="" class="nav_title">婚宴會議</a>
+              <ul>
+                <li><a href="">婚宴</a></li>
+                <li><a href="">會議</a></li>
+              </ul>
+            </li>
+            <li class="nav_list">
+              <a href="" class="nav_title">飯店服務</a>
+              <ul>
+                <li><a href="">戶外無邊際泳池</a></li>
+                <li><a href="">SOCIÉ Spa</a></li>
+                <li><a href="">三溫暖湯屋</a></li>
+                <li><a href="">茶屋</a></li>
+                <li><a href="">健身房</a></li>
+              </ul>
+            </li>
+            <li class="nav_list">
+              <a href="" class="nav_title">更多資訊</a>
+              <ul>
+                <li><a href="">行程推薦</a></li>
+                <li><a href="">交通資訊</a></li>
+                <li><a href="">聯絡我們</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </section>
       <!-- 隱私權政策 -->
       <section class="privacy_area">
         <a href="">隱私權政策</a>
@@ -463,7 +647,99 @@
         </p>
       </section>
     </footer>
-    <!-- JS -->
+    <!-- 菜單展開 -->
+    <main class="menu">
+      <div class="menu_container">
+        <!-- 上方按鈕 -->
+        <div class="top_btn_area">
+          <!-- 關閉按鈕 -->
+          <div class="closeBtn">
+            <span>關閉</span>
+            <i class="fa-light fa-xmark"></i>
+          </div>
+          <!-- 語言切換 -->
+          <div class="languageBtn">
+            <!-- 預設顯示 -->
+            <div class="default">
+              <span>Tw</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <!-- 選單 -->
+            <div class="language">
+              <a href="#">繁</a>
+            </div>
+          </div>
+        </div>
+        <!-- 主選單 -->
+        <main>
+          <!-- 主選單 標題 -->
+          <nav>
+            <ul>
+              <li>
+                <a href="">關於我們</a>
+              </li>
+              <li>
+                <a href="">最新消息</a>
+              </li>
+              <li>
+                <a href="">客房介紹</a>
+              </li>
+              <li>
+                <a href="">餐飲服務</a>
+              </li>
+              <li>
+                <a href="">婚宴會議</a>
+              </li>
+              <li>
+                <a href="">飯店服務</a>
+              </li>
+              <li>
+                <a href="">更多服務</a>
+              </li>
+            </ul>
+          </nav>
+          <!-- 主選單顯示資訊 -->
+          <nav>
+            <ul>
+              <li>
+                <a href="">關於我們</a>
+              </li>
+              <li>
+                <a href="">最新消息</a>
+              </li>
+              <li>
+                <a href="">客房介紹</a>
+              </li>
+              <li>
+                <a href="">餐飲服務</a>
+              </li>
+              <li>
+                <a href="">婚宴會議</a>
+              </li>
+              <li>
+                <a href="">飯店服務</a>
+              </li>
+              <li>
+                <a href="">更多服務</a>
+              </li>
+            </ul>
+          </nav>
+        </main>
+        <!-- 訂房按鈕 -->
+        <div class="bookingBtn">
+          <div class="left">
+            <i class="fa-solid fa-calendar-days"></i>
+            <p>立即訂房</p>
+            <span>Reservation</span>
+          </div>
+          <div class="right">
+            <i class="fa-light fa-arrow-right"></i>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- JS ------------------------------------------------------>
     <script src="./asset/js/index.js"></script>
   </body>
 </html>

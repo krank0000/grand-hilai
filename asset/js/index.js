@@ -1,5 +1,6 @@
 // 輪播圖-----------------------------------------------------------------------------
 
+/*
 // 獲取DOM元素
 const carousel = document.getElementById("carousel");
 const scrollbarThumb = document.getElementById("scrollbar-thumb");
@@ -69,3 +70,5 @@ carousel.addEventListener("scroll", () => {
     (carousel.scrollLeft / (carousel.scrollWidth - carousel.clientWidth)) * 100;
   scrollbarThumb.style.left = `${scrollPercentage}%`;
 });
+
+*/
