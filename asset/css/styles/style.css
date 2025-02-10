@@ -35,6 +35,12 @@ header div.top_header div.left a {
   margin-right: 1.5rem;
   text-decoration: none;
 }
+@media screen and (max-width: 450px) {
+  header div.top_header div.left i,
+  header div.top_header div.left a {
+    font-size: 0.75rem;
+  }
+}
 header div.top_header div.right div.languageBtn .default {
   display: flex;
   align-items: center;
@@ -118,6 +124,11 @@ header div.main_header div.left div.logo a img {
   width: 100%;
   height: 100%;
 }
+@media screen and (max-width: 580px) {
+  header div.main_header div.left div.logo {
+    margin-left: 40px;
+  }
+}
 header div.main_header div.right {
   display: flex;
   align-items: center;
@@ -188,12 +199,12 @@ main section.booking_area form {
   padding: 1rem 0;
   font-family: "Montserrat", "Microsoft JhengHei", sans-serif;
 }
-main section.booking_area form label span {
-  color: gray;
-}
 main section.booking_area form .booking_date {
   display: flex;
   border-right: 1px solid gray;
+}
+main section.booking_area form .booking_date label span {
+  color: gray;
 }
 main section.booking_area form .booking_date .check_in,
 main section.booking_area form .booking_date .check_out {
@@ -269,6 +280,54 @@ main section.booking_area form .bookingBtn {
 main section.booking_area form div.booking_select {
   display: flex;
 }
+@media screen and (max-width: 455px) {
+  main section.booking_area form {
+    padding: 1rem;
+  }
+  main section.booking_area form .booking_select .booking_date .check_in,
+  main section.booking_area form .booking_select .booking_date .check_out {
+    padding: 0 5px;
+  }
+  main section.booking_area form .booking_select .booking_people,
+  main section.booking_area form .booking_select .booking_room {
+    padding: 0 5px;
+    border-right: none;
+  }
+  main section.booking_area form .bookingBtn {
+    width: 90%;
+    margin: 0;
+  }
+}
+@media screen and (max-width: 580px) {
+  main section.booking_area form .booking_select label {
+    margin-bottom: 0.5rem;
+  }
+  main section.booking_area form .booking_select .booking_date .check_in .choose_date,
+  main section.booking_area form .booking_select .booking_date .check_out .choose_date {
+    border-bottom: #cacaca 1px solid;
+  }
+  main section.booking_area form .booking_select .booking_date .check_in .choose_date p,
+  main section.booking_area form .booking_select .booking_date .check_out .choose_date p {
+    font-size: 1.25rem;
+    margin-right: 0;
+  }
+  main section.booking_area form .booking_select .booking_people,
+  main section.booking_area form .booking_select .booking_room {
+    border-right: none;
+  }
+  main section.booking_area form .booking_select .booking_people .choose_people,
+  main section.booking_area form .booking_select .booking_people .choose_room,
+  main section.booking_area form .booking_select .booking_room .choose_people,
+  main section.booking_area form .booking_select .booking_room .choose_room {
+    border-bottom: #cacaca 1px solid;
+  }
+  main section.booking_area form .booking_select .booking_people .choose_people p,
+  main section.booking_area form .booking_select .booking_people .choose_room p,
+  main section.booking_area form .booking_select .booking_room .choose_people p,
+  main section.booking_area form .booking_select .booking_room .choose_room p {
+    font-size: 1.25rem;
+  }
+}
 main section.carousel_area {
   transform: scale(0.9);
 }
@@ -298,6 +357,11 @@ main section.carousel_area div.title .title2 h2 {
   top: 2.7vw;
   left: 50%;
   transform: translateX(-50%);
+}
+@media screen and (max-width: 580px) {
+  main section.carousel_area div.title p {
+    padding: 50px 0;
+  }
 }
 @media screen and (max-width: 950px) {
   main section.carousel_area div.title .title2 h1 {
@@ -377,6 +441,17 @@ main section.carousel_area div.carousel_container div.carousel article.carousel_
 main section.carousel_area div.carousel_container div.carousel article.carousel_item:hover > div.carousel_text div.line_area span.line {
   width: 100%;
 }
+@media screen and (max-width: 450px) {
+  main section.carousel_area div.carousel_container div.carousel {
+    transform: scale(0.8);
+  }
+  main section.carousel_area div.carousel_container div.carousel article.carousel_item:first-child {
+    padding-left: 0;
+  }
+  main section.carousel_area div.carousel_container div.carousel article.carousel_item:last-child {
+    padding-right: 0;
+  }
+}
 main section.carousel_area div.carousel_container div.scrollbar {
   margin-top: 100px;
   width: 90vw;
@@ -448,6 +523,7 @@ main section.facility_area a.facility_item figure {
   overflow: hidden;
 }
 main section.facility_area a.facility_item figure img {
+  min-width: 289px;
   width: 100%;
   height: 100%;
   transition: 0.5s ease-in-out;
@@ -961,8 +1037,7 @@ div.fixed_booking a i {
   margin-left: 1.5rem;
 }
 
-/* 手機樣式 */
-@media screen and (max-width: 730px) {
+@media screen and (max-width: 768px) {
   header div.top_header div.right {
     display: none;
   }
@@ -983,6 +1058,19 @@ div.fixed_booking a i {
   }
   div.fixed_booking a i {
     float: right;
+  }
+  main section {
+    transform: scale(0.9);
+  }
+  main section.banner {
+    transform: scale(1);
+    min-height: 50vh;
+  }
+  main section.banner img {
+    min-height: 50vh;
+  }
+  main section.booking_area {
+    transform: scale(1);
   }
 }
 @media screen and (max-width: 850px) {

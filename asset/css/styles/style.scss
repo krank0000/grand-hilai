@@ -31,6 +31,12 @@ header {
         margin-right: 1.5rem;
         text-decoration: none;
       }
+      @media screen and (max-width: 450px) {
+        i,
+        a {
+          font-size: 0.75rem;
+        }
+      }
     }
     div.right {
       // 語言選擇
@@ -128,6 +134,10 @@ header {
             height: 100%;
           }
         }
+        //RWD========================================
+        @media screen and (max-width: 580px) {
+          margin-left: 40px;
+        }
       }
     }
     div.right {
@@ -214,18 +224,17 @@ main {
       padding: 1rem 0;
       font-family: "Montserrat", "Microsoft JhengHei", sans-serif;
 
-      // 標題
-      label {
-        span {
-          color: gray;
-        }
-      }
-
       // 住房日期
       .booking_date {
         display: flex;
         border-right: 1px solid gray;
 
+        // 標題
+        label {
+          span {
+            color: gray;
+          }
+        }
         .check_in,
         .check_out {
           display: flex;
@@ -301,6 +310,71 @@ main {
         display: flex;
       }
     }
+    //RWD================================
+
+    @media screen and (max-width: 455px) {
+      form {
+        padding: 1rem;
+        //訂房選擇區
+        .booking_select {
+          // 住房日期
+          .booking_date {
+            .check_in,
+            .check_out {
+              padding: 0 5px;
+            }
+          }
+          // 人數與房數
+          .booking_people,
+          .booking_room {
+            padding: 0 5px;
+            border-right: none;
+          }
+        }
+        // 訂房按鈕
+        .bookingBtn {
+          width: 90%;
+          margin: 0;
+        }
+      }
+    }
+
+    @media screen and (max-width: 580px) {
+      form {
+        //訂房選擇區
+        .booking_select {
+          // 標題
+          label {
+            margin-bottom: 0.5rem;
+          }
+          // 住房日期
+          .booking_date {
+            .check_in,
+            .check_out {
+              .choose_date {
+                border-bottom: #cacaca 1px solid;
+                p {
+                  font-size: 1.25rem;
+                  margin-right: 0;
+                }
+              }
+            }
+          }
+          // 人數與房數
+          .booking_people,
+          .booking_room {
+            border-right: none;
+            .choose_people,
+            .choose_room {
+              border-bottom: #cacaca 1px solid;
+              p {
+                font-size: 1.25rem;
+              }
+            }
+          }
+        }
+      }
+    }
   }
   //輪播區塊-------------------------------
   section.carousel_area {
@@ -333,6 +407,13 @@ main {
         }
       }
       //RWD===================================
+
+      @media screen and (max-width: 580px) {
+        p {
+          padding: 50px 0;
+        }
+      }
+
       @media screen and (max-width: 950px) {
         .title2 {
           h1 {
@@ -430,6 +511,18 @@ main {
             }
           }
         }
+        @media screen and (max-width: 450px) {
+          transform: scale(0.8);
+
+          article.carousel_item {
+            &:first-child {
+              padding-left: 0;
+            }
+            &:last-child {
+              padding-right: 0;
+            }
+          }
+        }
       }
       //   輪播scrollbar
       div.scrollbar {
@@ -506,6 +599,7 @@ main {
         height: 420px;
         overflow: hidden;
         img {
+          min-width: 289px;
           width: 100%;
           height: 100%;
           transition: 0.5s ease-in-out;
@@ -1085,11 +1179,10 @@ div.fixed_booking {
 }
 
 //RWD====================================================================================
-/* 手機樣式 */
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 450px) {
 }
 
-@media screen and (max-width: 730px) {
+@media screen and (max-width: 768px) {
   //隱藏[語言]按鈕&[線上訂房]按鈕
   header {
     // top header-----------------------------
@@ -1121,6 +1214,24 @@ div.fixed_booking {
       i {
         float: right;
       }
+    }
+  }
+  //沒辦法調RWD直接用transform: scale(0.9)縮小
+  main {
+    section {
+      transform: scale(0.9);
+    }
+    // banner-------------------------------
+    section.banner {
+      transform: scale(1);
+      min-height: 50vh;
+      img {
+        min-height: 50vh;
+      }
+    }
+    // 訂房區塊-------------------------------
+    section.booking_area {
+      transform: scale(1);
     }
   }
 }
