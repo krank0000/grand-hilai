@@ -804,7 +804,7 @@
       </div>
     </main>
     <!-- 下方固定[立即訂房]按鈕 -->
-    <div class="fixed_booking">
+    <div class="fixed_booking" id="fixed_booking">
       <a href="">
         <span>立即訂房</span>
         <span>Reservation</span>
@@ -812,15 +812,26 @@
       </a>
     </div>
     <script>
-      $(document).ready(function () {
-        // 捲軸偵測距離頂部超過 500 才顯示 .fixed_booking
-        $(window).scroll(function () {
-          if ($(this).scrollTop() > 500) {
-            $(".fixed_booking").fadeIn();
-          } else {
-            $(".fixed_booking").fadeOut();
-          }
-        });
+      // 當頁面捲動時顯示或隱藏按鈕
+      window.onscroll = function () {
+        const fixBtn = document.getElementById("fixed_booking");
+        const scrollHeight = document.documentElement.scrollTop;
+        const triggerHeight = window.innerHeight * 1.5; // 150vh
+
+        if (scrollHeight > triggerHeight) {
+          fixBtn.style.transform = "translateY(0)";
+          fixBtn.style.pointerEvents = "auto"; // 讓按鈕可點擊
+        } else {
+          fixBtn.style.transform = "translateY(50px)";
+          fixBtn.style.pointerEvents = "none"; // 避免點擊隱藏的按鈕
+        }
+      };
+      // 初始化 CSS
+      document.addEventListener("DOMContentLoaded", function () {
+        const fixBtn = document.getElementById("fixed_booking");
+        fixBtn.style.transition = "transform 0.5s ease-in-out"; // 添加 transform 動畫
+        fixBtn.style.transform = "translateY(50px)"; // 預設往下位移
+        fixBtn.style.pointerEvents = "none";
       });
     </script>
     <!-- JS ------------------------------------------------------>
