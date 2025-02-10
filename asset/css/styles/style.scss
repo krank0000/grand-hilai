@@ -296,6 +296,10 @@ main {
         outline: 1px solid black;
         margin-left: 1rem;
       }
+
+      div.booking_select {
+        display: flex;
+      }
     }
   }
   //輪播區塊-------------------------------
@@ -326,6 +330,17 @@ main {
           top: calc(100vw / 25 * 1.35 / 2);
           left: 50%;
           transform: translateX(-50%);
+        }
+      }
+      //RWD===================================
+      @media screen and (max-width: 950px) {
+        .title2 {
+          h1 {
+            font-size: 3rem;
+          }
+          h2 {
+            font-size: 2.5rem;
+          }
         }
       }
     }
@@ -545,6 +560,33 @@ main {
         color: #cb9d70;
       }
     }
+    //RWD===================================
+    @media screen and (max-width: 950px) {
+      flex-direction: column;
+      position: relative;
+      a.facility_item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 2rem;
+        position: relative;
+
+        div.line_area {
+          width: 380px;
+        }
+        p {
+          width: 380px;
+        }
+        div.more {
+          width: 380px;
+          margin-top: 1rem;
+          p {
+            display: inline;
+          }
+        }
+      }
+    }
   }
   //策畫行程-------------------------------
   section.journey_area {
@@ -568,6 +610,7 @@ main {
     // 行程區
     div.journey_container {
       padding-bottom: 100px;
+      position: relative;
       div.journey_area {
         // 項目區
         div.journey {
@@ -578,14 +621,17 @@ main {
           height: 500px;
           display: flex;
           align-items: center; //垂直置中(hover從中間展開)
+          justify-content: center;
+          transition: 0.5s ease-in-out;
+          overflow: hidden;
 
           // 每一個項目
           article.journey_item {
             position: relative;
             overflow: hidden;
-            width: calc(90vw / 4 - 1.5rem);
             height: 430px;
             margin: 0 1.5rem;
+            min-width: 290px;
 
             // 圖片
             a {
@@ -623,12 +669,40 @@ main {
           }
         }
       }
+      //輪播按鈕 RWD
+      div.journey_btn {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 98vw;
+        display: flex;
+        justify-content: space-between;
+
+        button {
+          background-color: transparent;
+          color: rgb(95, 95, 95);
+          border: none;
+          padding: 0.75rem 2rem;
+          cursor: pointer;
+          transition: 0.5s ease-in-out;
+          outline: none;
+          &:hover {
+            color: black;
+          }
+          i {
+            font-size: 1.5rem;
+          }
+        }
+      }
     }
   }
 }
 footer {
   background: url("../../img/footer_BG.jpg");
-  background-repeat: no-repeat;
+  // background-repeat: no-repeat;
+  background-size: 100% 100%;
   padding: 80px;
   //公司資訊-------------------------------
   section.information_area {
@@ -637,6 +711,10 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: end;
+    flex-wrap: wrap;
+    img {
+      padding: 0 20px;
+    }
     div.information {
       color: rgb(104, 104, 104);
       padding-right: 20vw;
@@ -646,6 +724,18 @@ footer {
     }
     a {
       color: white;
+    }
+    //RWD===================================
+    @media screen and (max-width: 1050px) {
+      padding: 0;
+      padding-bottom: 40px;
+      flex-direction: column;
+      align-items: center;
+      div.information {
+        margin: 20px 0;
+        padding: 0;
+        text-align: center;
+      }
     }
   }
   //導覽nav--------------------------------
@@ -692,6 +782,19 @@ footer {
         }
       }
     }
+    //RWD===================================
+    @media screen and (max-width: 1050px) {
+      nav {
+        ul.nav {
+          display: flex;
+          justify-content: start;
+          flex-wrap: wrap;
+          li.nav_list {
+            margin: 0 20px;
+          }
+        }
+      }
+    }
   }
   //隱私權政策-----------------------------
   section.privacy_area {
@@ -733,21 +836,38 @@ main.menu {
       display: flex;
       justify-content: space-between;
       position: relative;
-      //關閉按鈕
-      .closeBtn {
+      .left {
         display: flex;
-        align-items: center;
-        cursor: pointer;
-        transition: 0.5s ease-in-out;
-        span {
-          font-size: 0.75rem;
+        //關閉按鈕
+        .closeBtn {
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+          transition: 0.5s ease-in-out;
+          span {
+            font-size: 0.75rem;
+          }
+          i {
+            font-size: 2rem;
+            margin-left: 1rem;
+          }
+          &:hover {
+            color: #cb9d70;
+          }
         }
-        i {
-          font-size: 2rem;
-          margin-left: 1rem;
-        }
-        &:hover {
-          color: #cb9d70;
+        //logo (RWD手機顯示)
+        .logo {
+          display: none;
+          margin-left: 80px;
+          a {
+            display: block;
+            width: 180px;
+            height: 35px;
+            img {
+              width: 100%;
+              height: 100%;
+            }
+          }
         }
       }
       //語言切換
@@ -875,8 +995,31 @@ main.menu {
         }
       }
     }
+    //社群連結(RWD手機顯示)-------------------
+    .social_link {
+      display: none;
+      width: 100%;
+      padding: 1rem 0;
+      height: 3.5rem;
+      position: relative;
+      a {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        display: inline-block;
+        i {
+          font-size: 1.5rem;
+          color: rgb(165, 165, 165);
+          transition: 0.5s ease-in-out;
+        }
+        &:hover i {
+          color: #000000;
+        }
+      }
+    }
     //訂房按鈕-------------------------------
     .bookingBtn {
+      position: relative;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -939,4 +1082,185 @@ div.fixed_booking {
       margin-left: 1.5rem;
     }
   }
+}
+
+//RWD====================================================================================
+/* 手機樣式 */
+@media screen and (max-width: 576px) {
+}
+
+@media screen and (max-width: 730px) {
+  //隱藏[語言]按鈕&[線上訂房]按鈕
+  header {
+    // top header-----------------------------
+    div.top_header {
+      //隱藏[語言]按鈕
+      div.right {
+        display: none;
+      }
+    }
+    // main header----------------------------
+    div.main_header {
+      //隱藏[線上訂房]按鈕
+      div.right {
+        display: none;
+      }
+    }
+  }
+  //下方固定[立即訂房]按鈕-----------------------------------
+  div.fixed_booking {
+    width: 100vw;
+    position: fixed;
+    bottom: 0px;
+    right: 0;
+    left: 0;
+    a {
+      width: 100%;
+      display: block;
+      text-align: center;
+      i {
+        float: right;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 850px) {
+  main {
+    // 訂房區塊-------------------------------
+    section.booking_area {
+      form {
+        flex-direction: column;
+        //訂房選擇區
+        #bookingSelect {
+          width: 100%;
+          margin-bottom: 1.75rem;
+        }
+      }
+    }
+  }
+}
+
+/* 平板以上 */
+@media screen and (max-width: 1180px) {
+  header {
+    // top header-----------------------------
+    div.top_header {
+      padding: 10px 40px;
+    }
+    // main header----------------------------
+    div.main_header {
+      padding: 10px 40px;
+      div.right {
+        // 主選單
+        nav {
+          display: none;
+        }
+      }
+    }
+  }
+  main {
+    // 訂房區塊-------------------------------
+    section.booking_area {
+      form {
+        //訂房選擇區
+        .booking_select {
+          width: 70%;
+          flex-wrap: wrap;
+          // 住房日期
+          .booking_date {
+            width: 100%;
+            border-right: none;
+            margin-bottom: 1rem;
+            .check_in,
+            .check_out {
+              width: 50%;
+              .choose_date {
+                justify-content: space-between;
+              }
+            }
+          }
+          // 人數與房數
+          .booking_people,
+          .booking_room {
+            width: 50%;
+            label {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+  // 菜單展開-----------------------------------------------
+  main.menu {
+    .menu_container {
+      padding: 0px;
+      //上方按鈕-------------------------------
+      .top_btn_area {
+        max-height: 10vh;
+        padding: 50px 50px 20px 50px;
+        border-bottom: #b2b2b2 1px solid;
+        position: relative;
+        .left {
+          //關閉按鈕
+          .closeBtn {
+            span {
+              display: none;
+            }
+          }
+          //logo (RWD手機顯示)
+          .logo {
+            display: block;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+          }
+        }
+      }
+      //主選單---------------------------------
+      main {
+        max-height: 60vh;
+        padding: 20px 50px;
+        // 主選單 標題-------
+        nav.menu_title {
+          width: 100%;
+          height: 100%;
+          ol {
+            li {
+              height: 100%;
+              display: flex;
+              align-items: center;
+              border-bottom: #b2b2b2 1px solid;
+
+              a {
+                padding: 0 1.5rem;
+              }
+            }
+          }
+        }
+        // 主選單 顯示資訊-------
+        nav.menu_info {
+          display: none;
+        }
+        //主選單顯示圖片---------
+        nav.menu_img {
+          display: none;
+        }
+      }
+      //社群連結(RWD手機顯示)-------------------
+      .social_link {
+        display: block;
+      }
+      //訂房按鈕-------------------------------
+      .bookingBtn {
+        margin: 0 50px;
+        width: calc(100% - 100px);
+      }
+    }
+  }
+}
+
+/* 超大螢幕樣式 */
+@media screen and (min-width: 1400px) {
 }

@@ -124,3 +124,56 @@ $(document).ready(function () {
     $("#menu").animate({ right: "-100%" }, 500);
   });
 });
+
+//策畫行程 RWD===========================================================================
+document.addEventListener("DOMContentLoaded", function () {
+  const journeyContainer = document.querySelector(".journey");
+  const journeyItems = document.querySelectorAll(".journey_item");
+  const prevBtn = document.querySelector(".prev");
+  const nextBtn = document.querySelector(".next");
+  const journeyBtn = document.querySelector(".journey_btn");
+
+  let currentIndex = 0;
+  let itemsPerView = getItemsPerView();
+
+  function getItemsPerView() {
+    const screenWidth = window.innerWidth;
+    if (screenWidth < 750) return 1;
+    if (screenWidth < 1126) return 2;
+    if (screenWidth < 1503) return 3;
+    return 4;
+    updateView();
+  }
+
+  function updateView() {
+    itemsPerView = getItemsPerView();
+    journeyItems.forEach((item, index) => {
+      item.style.display =
+        index >= currentIndex && index < currentIndex + itemsPerView
+          ? "block"
+          : "none";
+    });
+    journeyBtn.style.display =
+      itemsPerView < journeyItems.length ? "flex" : "none";
+  }
+
+  function moveNext() {
+    if (currentIndex + itemsPerView < journeyItems.length) {
+      currentIndex++;
+      updateView();
+    }
+  }
+
+  function movePrev() {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateView();
+    }
+  }
+
+  nextBtn.addEventListener("click", moveNext);
+  prevBtn.addEventListener("click", movePrev);
+  window.addEventListener("resize", updateView);
+
+  updateView();
+});

@@ -174,103 +174,111 @@
       <!-- 訂房區塊 -->
       <section class="booking_area">
         <form action="">
-          <!-- 住房日期 -->
-          <div class="booking_date">
-            <!-- 入住日期 -->
-            <div class="check_in">
-              <label for="check_in">入住日期 <span>Check in</span></label>
-              <!-- 日期 -->
-              <div class="choose_date">
-                <p id="checkInDate">2025.02.21</p>
-                <i
-                  class="fa-solid fa-calendar-days"
-                  onclick="openDatePicker('checkInInput')"
-                ></i>
-                <input
-                  type="date"
-                  id="checkInInput"
-                  onchange="updateDate('checkInDate', this.value)"
-                />
+          <div class="booking_select container" id="bookingSelect">
+            <!-- 住房日期 -->
+            <div class="booking_date">
+              <!-- 入住日期 -->
+              <div class="check_in">
+                <label for="check_in">入住日期 <span>Check in</span></label>
+                <!-- 日期 -->
+                <div class="choose_date">
+                  <p id="checkInDate">2025.02.21</p>
+                  <i
+                    class="fa-solid fa-calendar-days"
+                    onclick="openDatePicker('checkInInput')"
+                  ></i>
+                  <input
+                    type="date"
+                    id="checkInInput"
+                    onchange="updateDate('checkInDate', this.value)"
+                  />
+                </div>
+              </div>
+              <!-- 退房日期 -->
+              <div class="check_out">
+                <label for="check_out">退房日期 <span>Check out</span></label>
+                <!-- 日期 -->
+                <div class="choose_date">
+                  <p id="checkOutDate">2025.02.22</p>
+                  <i
+                    class="fa-solid fa-calendar-days"
+                    onclick="openDatePicker('checkOutInput')"
+                  ></i>
+                  <input
+                    type="date"
+                    id="checkOutInput"
+                    onchange="updateDate('checkOutDate', this.value)"
+                  />
+                </div>
               </div>
             </div>
-            <!-- 退房日期 -->
-            <div class="check_out">
-              <label for="check_out">退房日期 <span>Check out</span></label>
-              <!-- 日期 -->
-              <div class="choose_date">
-                <p id="checkOutDate">2025.02.22</p>
+            <!-- 日期選擇JS -->
+            <script>
+              // 當點擊日曆圖示時，開啟對應的日期選擇器
+              function openDatePicker(inputId) {
+                // 取得對應的 <input type="date"> 元素，並顯示日期選擇器
+                document.getElementById(inputId).showPicker();
+              }
+              // 當用戶選擇日期後，更新對應的 <p> 標籤內容
+              function updateDate(displayId, value) {
+                if (value) {
+                  // 格式化日期，將 YYYY-MM-DD 轉換成 YYYY.MM.DD
+                  let formattedDate = value.replace(/-/g, ".");
+                  // 更新指定的 <p> 標籤，使其顯示新的日期
+                  document.getElementById(displayId).textContent =
+                    formattedDate;
+                }
+              }
+            </script>
+            <!-- 人數 -->
+            <div class="booking_people">
+              <label>入住人數 <span>Guest</span></label>
+              <div class="choose_people">
                 <i
-                  class="fa-solid fa-calendar-days"
-                  onclick="openDatePicker('checkOutInput')"
+                  class="fa-solid fa-minus"
+                  onclick="updateValue('guest', -1)"
                 ></i>
-                <input
-                  type="date"
-                  id="checkOutInput"
-                  onchange="updateDate('checkOutDate', this.value)"
-                />
+                <p id="guestCount">2</p>
+                <i
+                  class="fa-solid fa-plus"
+                  onclick="updateValue('guest', 1)"
+                ></i>
               </div>
             </div>
-          </div>
-          <!-- 日期選擇JS -->
-          <script>
-            // 當點擊日曆圖示時，開啟對應的日期選擇器
-            function openDatePicker(inputId) {
-              // 取得對應的 <input type="date"> 元素，並顯示日期選擇器
-              document.getElementById(inputId).showPicker();
-            }
-            // 當用戶選擇日期後，更新對應的 <p> 標籤內容
-            function updateDate(displayId, value) {
-              if (value) {
-                // 格式化日期，將 YYYY-MM-DD 轉換成 YYYY.MM.DD
-                let formattedDate = value.replace(/-/g, ".");
-                // 更新指定的 <p> 標籤，使其顯示新的日期
-                document.getElementById(displayId).textContent = formattedDate;
-              }
-            }
-          </script>
-          <!-- 人數 -->
-          <div class="booking_people">
-            <label>入住人數 <span>Guest</span></label>
-            <div class="choose_people">
-              <i
-                class="fa-solid fa-minus"
-                onclick="updateValue('guest', -1)"
-              ></i>
-              <p id="guestCount">2</p>
-              <i class="fa-solid fa-plus" onclick="updateValue('guest', 1)"></i>
+            <!-- 房數 -->
+            <div class="booking_room">
+              <label>入住房數 <span>Room</span></label>
+              <div class="choose_room">
+                <i
+                  class="fa-solid fa-minus"
+                  onclick="updateValue('room', -1)"
+                ></i>
+                <p id="roomCount">1</p>
+                <i
+                  class="fa-solid fa-plus"
+                  onclick="updateValue('room', 1)"
+                ></i>
+              </div>
             </div>
-          </div>
-          <!-- 房數 -->
-          <div class="booking_room">
-            <label>入住房數 <span>Room</span></label>
-            <div class="choose_room">
-              <i
-                class="fa-solid fa-minus"
-                onclick="updateValue('room', -1)"
-              ></i>
-              <p id="roomCount">1</p>
-              <i class="fa-solid fa-plus" onclick="updateValue('room', 1)"></i>
-            </div>
-          </div>
-          <!-- 人數、房數選擇JS -->
-          <script>
-            function updateValue(type, change) {
-              // 獲取對應的元素
-              let countElement = document.getElementById(
-                type === "guest" ? "guestCount" : "roomCount"
-              );
-              let currentValue = parseInt(countElement.textContent);
+            <!-- 人數、房數選擇JS -->
+            <script>
+              function updateValue(type, change) {
+                // 獲取對應的元素
+                let countElement = document.getElementById(
+                  type === "guest" ? "guestCount" : "roomCount"
+                );
+                let currentValue = parseInt(countElement.textContent);
 
-              // 計算新的數值
-              let newValue = currentValue + change;
+                // 計算新的數值
+                let newValue = currentValue + change;
 
-              // 限制最小值為 1（不可為 0 或負數）
-              if (newValue >= 1) {
-                countElement.textContent = newValue;
+                // 限制最小值為 1（不可為 0 或負數）
+                if (newValue >= 1) {
+                  countElement.textContent = newValue;
+                }
               }
-            }
-          </script>
-
+            </script>
+          </div>
           <!-- 訂房按鈕 -->
           <button class="bookingBtn" onclick="event.preventDefault();">
             <span>立即訂房</span>
@@ -542,7 +550,7 @@
             </div>
           </div>
           <!-- 輪播按鈕 RWD-->
-          <div class="journey_btn" style="display: none">
+          <div class="journey_btn">
             <button class="prev">
               <i class="fa-solid fa-chevron-left"></i>
             </button>
@@ -652,10 +660,20 @@
       <div class="menu_container">
         <!-- 上方按鈕 -->
         <div class="top_btn_area">
-          <!-- 關閉按鈕 -->
-          <div class="closeBtn" id="closeBtn">
-            <span>關閉</span>
-            <i class="fa-light fa-xmark"></i>
+          <div class="left">
+            <!-- 關閉按鈕 -->
+            <div class="closeBtn" id="closeBtn">
+              <span>關閉</span>
+              <i class="fa-light fa-xmark"></i>
+            </div>
+            <!-- logo -->
+            <div class="logo">
+              <a href="./index.html">
+                <img
+                  src="https://sunmoonlake.grand-hilai.com.tw/images/logo_new.svg"
+                />
+              </a>
+            </div>
           </div>
           <!-- 語言切換 -->
           <div class="languageBtn">
@@ -790,6 +808,12 @@
             </ol>
           </nav>
         </main>
+        <!-- 社群連結(RWD手機顯示) -->
+        <div class="social_link">
+          <a href="#">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+        </div>
         <!-- 訂房按鈕 -->
         <div class="bookingBtn">
           <div class="left">
@@ -811,6 +835,7 @@
         <i class="fa-solid fa-chevron-up"></i>
       </a>
     </div>
+    <!-- 下方固定顯示JS -->
     <script>
       // 當頁面捲動時顯示或隱藏按鈕
       window.onscroll = function () {
