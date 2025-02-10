@@ -344,10 +344,21 @@ main section.carousel_area div.title .title2 {
   padding-bottom: 100px;
   overflow: hidden;
 }
-main section.carousel_area div.title .title2 h1 {
+main section.carousel_area div.title .title2 .title_gradient {
+  position: relative;
+}
+main section.carousel_area div.title .title2 .title_gradient h1 {
   font-family: Times, "Times New Roman", Georgia, serif;
   color: #f6ece3;
   font-size: 5.4vw;
+}
+main section.carousel_area div.title .title2 .title_gradient div.gradient {
+  width: 100%;
+  height: 100px;
+  background-color: rgb(254, 250, 247);
+  position: absolute;
+  top: 0;
+  right: -100%;
 }
 main section.carousel_area div.title .title2 h2 {
   font-size: 3rem;

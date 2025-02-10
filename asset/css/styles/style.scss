@@ -391,10 +391,22 @@ main {
         width: 100vw;
         padding-bottom: 100px;
         overflow: hidden;
-        h1 {
-          font-family: Times, "Times New Roman", Georgia, serif;
-          color: #f6ece3;
-          font-size: calc(100vw / 25 * 1.35);
+        //漸變文字區
+        .title_gradient {
+          position: relative;
+          h1 {
+            font-family: Times, "Times New Roman", Georgia, serif;
+            color: #f6ece3;
+            font-size: calc(100vw / 25 * 1.35);
+          }
+          div.gradient {
+            width: 100%;
+            height: 100px;
+            background-color: rgb(254, 250, 247);
+            position: absolute;
+            top: 0;
+            right: -100%;
+          }
         }
         h2 {
           font-size: 3rem;
