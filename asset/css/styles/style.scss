@@ -1384,6 +1384,66 @@ div.fixed_booking {
   }
 }
 
-/* 超大螢幕樣式 */
-@media screen and (min-width: 1400px) {
+//超大螢幕樣式
+@media screen and (min-width: 1540px) {
+  header {
+    // top header-----------------------------
+    --padding_w: calc((100vw - 1540px) / 2);
+    div.top_header {
+      padding: 10px var(--padding_w);
+      // 語言選單(點擊後顯示)
+      #language {
+        position: fixed;
+        right: var(--padding_w);
+      }
+    }
+    // main header----------------------------
+    div.main_header {
+      padding: 10px var(--padding_w);
+    }
+  }
+  main.content,
+  footer {
+    max-width: 1540px;
+    margin: 0 auto;
+  }
+  // 菜單展開-----------------------------------------------
+  main.menu {
+    .menu_container {
+      max-width: 60vw;
+    }
+  }
+  //main中的section(跑版區塊)
+  main {
+    //輪播區塊-------------------------------
+    section.carousel_area {
+      // 文字標題區
+      .title2 {
+        max-width: 1540px;
+        margin: 0 auto;
+        //漸變文字區
+        .title_gradient {
+          h1#gradient_text {
+            font-size: calc(1540px / 25 * 1.35);
+          }
+          div.gradient {
+            width: 100%;
+            height: 100px;
+            background-color: rgb(254, 250, 247);
+            position: absolute;
+            top: 0;
+            right: -100%;
+          }
+        }
+      }
+    }
+    //房型展示-------------------------------
+    section.room_area {
+      a.room_img_link {
+        img {
+          max-width: 1540px;
+        }
+      }
+    }
+  }
 }

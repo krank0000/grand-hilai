@@ -1178,4 +1178,44 @@ div.fixed_booking a i {
     width: calc(100% - 100px);
   }
 }
-/* 超大螢幕樣式 *//*# sourceMappingURL=style.css.map */
+@media screen and (min-width: 1540px) {
+  header {
+    --padding_w: calc((100vw - 1540px) / 2);
+  }
+  header div.top_header {
+    padding: 10px var(--padding_w);
+  }
+  header div.top_header #language {
+    position: fixed;
+    right: var(--padding_w);
+  }
+  header div.main_header {
+    padding: 10px var(--padding_w);
+  }
+  main.content,
+  footer {
+    max-width: 1540px;
+    margin: 0 auto;
+  }
+  main.menu .menu_container {
+    max-width: 60vw;
+  }
+  main section.carousel_area .title2 {
+    max-width: 1540px;
+    margin: 0 auto;
+  }
+  main section.carousel_area .title2 .title_gradient h1#gradient_text {
+    font-size: 83.16px;
+  }
+  main section.carousel_area .title2 .title_gradient div.gradient {
+    width: 100%;
+    height: 100px;
+    background-color: rgb(254, 250, 247);
+    position: absolute;
+    top: 0;
+    right: -100%;
+  }
+  main section.room_area a.room_img_link img {
+    max-width: 1540px;
+  }
+}/*# sourceMappingURL=style.css.map */
