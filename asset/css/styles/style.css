@@ -1032,6 +1032,7 @@ main.menu .menu_container .bookingBtn:hover .right i {
 }
 
 div.fixed_booking {
+  z-index: 100;
   position: fixed;
   bottom: 10px;
   right: 30px;
@@ -1218,4 +1219,70 @@ div.fixed_booking a i {
   main section.room_area a.room_img_link img {
     max-width: 1540px;
   }
+}
+.swiper {
+  z-index: 1;
+  width: 90vw;
+  height: auto;
+}
+.swiper .swiper-wrapper {
+  height: 500px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.swiper .swiper-wrapper .swiper-slide {
+  height: 400px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.5s ease-in-out;
+}
+.swiper .swiper-wrapper .swiper-slide a {
+  height: auto;
+  padding: 20px;
+  display: block;
+  height: 450px;
+  width: 350px;
+  background-image: url("../../img/twL_travel_24L11_I2m1zeTTfA.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.swiper .swiper-wrapper .swiper-slide a div.journey_text {
+  position: absolute;
+  bottom: 0;
+  color: white;
+  padding: 1.75rem 1.5rem;
+}
+.swiper .swiper-wrapper .swiper-slide a div.journey_text div.text_top i {
+  margin-right: 0.5rem;
+}
+.swiper .swiper-wrapper .swiper-slide a div.journey_text h4 {
+  font-size: 1.25rem;
+  margin-top: 0.25rem;
+}
+.swiper .swiper-wrapper .swiper-slide a.swiper-img1 {
+  background-image: url("../../img/twL_travel_24L11_I2m1zeTTfA.jpg");
+}
+.swiper .swiper-wrapper .swiper-slide a.swiper-img2 {
+  background-image: url("../../img/twL_travel_24L11_DgYXKs55BM.jpg");
+}
+.swiper .swiper-wrapper .swiper-slide a.swiper-img3 {
+  background-image: url("../../img/twL_travel_24L11_cQnCEuLeHv.jpg");
+}
+.swiper .swiper-wrapper .swiper-slide a.swiper-img4 {
+  background-image: url("../../img/twL_travel_24L11_FJgEEw6yc2.jpg");
+}
+.swiper .swiper-wrapper .swiper-slide:hover {
+  height: 450px;
+}
+.swiper .swiper-button-prev {
+  color: #9a9a9a;
+  font-size: 1.5rem;
+}
+.swiper .swiper-button-next {
+  color: #9a9a9a;
+  font-size: 1.5rem;
 }/*# sourceMappingURL=style.css.map */

@@ -1173,6 +1173,7 @@ main.menu {
 
 //下方固定[立即訂房]按鈕-----------------------------------
 div.fixed_booking {
+  z-index: 100;
   // display: none; //預設隱藏
   position: fixed;
   bottom: 10px;
@@ -1445,5 +1446,81 @@ div.fixed_booking {
         }
       }
     }
+  }
+}
+//策畫行程-new Swiper輪播-----------------------------------
+.swiper {
+  z-index: 1;
+  width: 90vw;
+  height: auto;
+  .swiper-wrapper {
+    height: 500px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    .swiper-slide {
+      height: 400px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      a {
+        height: auto;
+        padding: 20px;
+        display: block;
+        height: 450px;
+        width: 350px;
+        background-image: url("../../img/twL_travel_24L11_I2m1zeTTfA.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        //文字
+        div.journey_text {
+          position: absolute;
+          bottom: 0;
+          color: white;
+          padding: 1.75rem 1.5rem;
+          div.text_top {
+            i {
+              margin-right: 0.5rem;
+            }
+          }
+          h4 {
+            font-size: 1.25rem;
+            margin-top: 0.25rem;
+          }
+        }
+        //更換圖片
+        &.swiper-img1 {
+          background-image: url("../../img/twL_travel_24L11_I2m1zeTTfA.jpg");
+        }
+
+        &.swiper-img2 {
+          background-image: url("../../img/twL_travel_24L11_DgYXKs55BM.jpg");
+        }
+
+        &.swiper-img3 {
+          background-image: url("../../img/twL_travel_24L11_cQnCEuLeHv.jpg");
+        }
+
+        &.swiper-img4 {
+          background-image: url("../../img/twL_travel_24L11_FJgEEw6yc2.jpg");
+        }
+      }
+      transition: 0.5s ease-in-out;
+      // 滑鼠移入效果
+      &:hover {
+        height: 450px;
+      }
+    }
+  }
+  //按鈕
+  .swiper-button-prev {
+    color: #9a9a9a;
+    font-size: 1.5rem;
+  }
+  .swiper-button-next {
+    color: #9a9a9a;
+    font-size: 1.5rem;
   }
 }

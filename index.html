@@ -36,6 +36,11 @@
     />
     <!-- jQuery -->
     <script src="./asset/js/jquery-3.7.1.min.js"></script>
+    <!-- Link Swiper's CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
     <!-- GSAP CDN -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
@@ -468,19 +473,11 @@
           <h1>策劃多樣豐富行程</h1>
         </div>
         <!-- 行程區 -->
-        <div class="journey_container">
-          <div class="journey_area">
-            <!-- 項目區 -->
-            <div class="journey" id="journey">
-              <!-- 每一個項目 -->
-              <article class="journey_item">
-                <!-- 圖片 -->
-                <a href="#">
-                  <img
-                    src="./asset/img/twL_travel_24L11_I2m1zeTTfA.jpg"
-                    alt=""
-                  />
-                </a>
+        <!-- Swiper -->
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <a href="#" class="swiper-img1">
                 <!-- 文字 -->
                 <div class="journey_text">
                   <div class="text_top">
@@ -493,15 +490,10 @@
                   </div>
                   <h4>夕陽遊艇</h4>
                 </div>
-              </article>
-              <article class="journey_item">
-                <!-- 圖片 -->
-                <a href="#">
-                  <img
-                    src="./asset/img/twL_travel_24L11_DgYXKs55BM.jpg"
-                    alt=""
-                  />
-                </a>
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a href="#" class="swiper-img2">
                 <!-- 文字 -->
                 <div class="journey_text">
                   <div class="text_top">
@@ -514,15 +506,10 @@
                   </div>
                   <h4>晨間遊湖</h4>
                 </div>
-              </article>
-              <article class="journey_item">
-                <!-- 圖片 -->
-                <a href="#">
-                  <img
-                    src="./asset/img/twL_travel_24L11_cQnCEuLeHv.jpg"
-                    alt=""
-                  />
-                </a>
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a href="#" class="swiper-img3">
                 <!-- 文字 -->
                 <div class="journey_text">
                   <div class="text_top">
@@ -535,15 +522,10 @@
                   </div>
                   <h4>紓壓瑜樂</h4>
                 </div>
-              </article>
-              <article class="journey_item">
-                <!-- 圖片 -->
-                <a href="#">
-                  <img
-                    src="./asset/img/twL_travel_24L11_FJgEEw6yc2.jpg"
-                    alt=""
-                  />
-                </a>
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a href="#" class="swiper-img4">
                 <!-- 文字 -->
                 <div class="journey_text">
                   <div class="text_top">
@@ -556,18 +538,12 @@
                   </div>
                   <h4>行館迎曙光</h4>
                 </div>
-              </article>
+              </a>
             </div>
           </div>
-          <!-- 輪播按鈕 RWD-->
-          <div class="journey_btn">
-            <button class="prev">
-              <i class="fa-solid fa-chevron-left"></i>
-            </button>
-            <button class="next">
-              <i class="fa-solid fa-chevron-right"></i>
-            </button>
-          </div>
+          <!-- 按鈕 -->
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
         </div>
       </section>
     </main>
@@ -839,7 +815,7 @@
     </main>
     <!-- 下方固定[立即訂房]按鈕 -->
     <div class="fixed_booking" id="fixed_booking">
-      <a href="">
+      <a href="#">
         <span>立即訂房</span>
         <span>Reservation</span>
         <i class="fa-solid fa-chevron-up"></i>
@@ -872,5 +848,38 @@
     <!-- JS ------------------------------------------------------>
     <script src="./asset/js/index.js"></script>
     <script src="./asset/js/animation.js"></script>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 1,
+        spaceBetween: 10,
+        loop: true,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        breakpoints: {
+          "@0.00": {
+            slidesPerView: 1,
+            spaceBetween: 10,
+          },
+          "@0.75": {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          "@1.00": {
+            slidesPerView: 3,
+            spaceBetween: 40,
+          },
+          "@1.50": {
+            slidesPerView: 4,
+            spaceBetween: 50,
+          },
+        },
+      });
+    </script>
   </body>
 </html>
