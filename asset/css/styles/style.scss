@@ -928,7 +928,7 @@ main.menu {
   z-index: 100;
   right: -100%;
   .menu_container {
-    width: 98.9vw;
+    width: 100vw;
     height: 100vh;
     padding: 50px;
     // 背景圖
@@ -1193,6 +1193,69 @@ div.fixed_booking {
 
 //RWD====================================================================================
 @media screen and (max-width: 450px) {
+  // 菜單展開-----------------------------------------------
+  main#menu {
+    .menu_container {
+      //上方按鈕-------------------------------
+      .top_btn_area {
+        max-height: 100px;
+        padding: 20px;
+        .left {
+          //關閉按鈕
+          .closeBtn {
+            span {
+              display: none;
+            }
+          }
+          //logo (RWD手機顯示)
+          .logo {
+            a {
+              transform: scale(0.8);
+            }
+          }
+        }
+      }
+      //主選單---------------------------------
+      main {
+        max-height: 60vh;
+        padding: 20px 50px;
+        // 主選單 標題-------
+        nav.menu_title {
+          width: 100%;
+          height: 100%;
+          ol {
+            li {
+              height: 100%;
+              display: flex;
+              align-items: center;
+              border-bottom: #b2b2b2 1px solid;
+
+              a {
+                padding: 0 1.5rem;
+              }
+            }
+          }
+        }
+        // 主選單 顯示資訊-------
+        nav.menu_info {
+          display: none;
+        }
+        //主選單顯示圖片---------
+        nav.menu_img {
+          display: none;
+        }
+      }
+      //社群連結(RWD手機顯示)-------------------
+      .social_link {
+        display: block;
+      }
+      //訂房按鈕-------------------------------
+      .bookingBtn {
+        margin: 0 50px;
+        width: calc(100% - 100px);
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -1449,78 +1512,164 @@ div.fixed_booking {
   }
 }
 //策畫行程-new Swiper輪播-----------------------------------
-.swiper {
-  z-index: 1;
-  width: 90vw;
-  height: auto;
-  .swiper-wrapper {
-    height: 500px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    .swiper-slide {
-      height: 400px;
-      overflow: hidden;
+section.journey_area {
+  .swiper {
+    z-index: 1;
+    width: 90vw;
+    height: auto;
+    .swiper-wrapper {
+      height: 500px;
+      width: 100%;
       display: flex;
       align-items: center;
-      justify-content: center;
-      a {
-        height: auto;
-        padding: 20px;
-        display: block;
-        height: 450px;
-        width: 350px;
-        background-image: url("../../img/twL_travel_24L11_I2m1zeTTfA.jpg");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        //文字
-        div.journey_text {
-          position: absolute;
-          bottom: 0;
-          color: white;
-          padding: 1.75rem 1.5rem;
-          div.text_top {
-            i {
-              margin-right: 0.5rem;
+      .swiper-slide {
+        height: 400px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        a {
+          height: auto;
+          padding: 20px;
+          display: block;
+          height: 450px;
+          width: 350px;
+          background-image: url("../../img/twL_travel_24L11_I2m1zeTTfA.jpg");
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          //文字
+          div.journey_text {
+            position: absolute;
+            bottom: 0;
+            color: white;
+            padding: 1.75rem 1.5rem;
+            div.text_top {
+              i {
+                margin-right: 0.5rem;
+              }
+            }
+            h4 {
+              font-size: 1.25rem;
+              margin-top: 0.25rem;
             }
           }
-          h4 {
-            font-size: 1.25rem;
-            margin-top: 0.25rem;
+          //更換圖片
+          &.swiper-img1 {
+            background-image: url("../../img/twL_travel_24L11_I2m1zeTTfA.jpg");
+          }
+
+          &.swiper-img2 {
+            background-image: url("../../img/twL_travel_24L11_DgYXKs55BM.jpg");
+          }
+
+          &.swiper-img3 {
+            background-image: url("../../img/twL_travel_24L11_cQnCEuLeHv.jpg");
+          }
+
+          &.swiper-img4 {
+            background-image: url("../../img/twL_travel_24L11_FJgEEw6yc2.jpg");
           }
         }
-        //更換圖片
-        &.swiper-img1 {
-          background-image: url("../../img/twL_travel_24L11_I2m1zeTTfA.jpg");
+        transition: 0.5s ease-in-out;
+        // 滑鼠移入效果
+        &:hover {
+          height: 450px;
         }
-
-        &.swiper-img2 {
-          background-image: url("../../img/twL_travel_24L11_DgYXKs55BM.jpg");
-        }
-
-        &.swiper-img3 {
-          background-image: url("../../img/twL_travel_24L11_cQnCEuLeHv.jpg");
-        }
-
-        &.swiper-img4 {
-          background-image: url("../../img/twL_travel_24L11_FJgEEw6yc2.jpg");
-        }
-      }
-      transition: 0.5s ease-in-out;
-      // 滑鼠移入效果
-      &:hover {
-        height: 450px;
       }
     }
+    //按鈕
+    .swiper-button-prev {
+      color: #9a9a9a;
+      font-size: 1.5rem;
+    }
+    .swiper-button-next {
+      color: #9a9a9a;
+      font-size: 1.5rem;
+    }
   }
-  //按鈕
-  .swiper-button-prev {
-    color: #9a9a9a;
-    font-size: 1.5rem;
-  }
-  .swiper-button-next {
-    color: #9a9a9a;
-    font-size: 1.5rem;
+}
+// 輪播區塊-------------------------------
+section.carousel_area {
+  .carousel_Swiper {
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    // 輪播區塊
+    .swiper-wrapper {
+      margin-bottom: 100px;
+      //每一個輪播項目
+      .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        // background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        // 每一個輪播項目
+        article.carousel_item {
+          margin: 0 1.5rem;
+          scroll-snap-align: start;
+          width: 100%;
+
+          //圖片
+          figure {
+            // width: 100%;
+            // height: 550px;
+            overflow: hidden;
+            img {
+              transition: 0.5s ease-in-out;
+              &:hover {
+                transform: scale(1.1);
+                filter: brightness(0.7); //圖片變暗
+              }
+            }
+          }
+          div.carousel_text {
+            margin-top: 1.5rem;
+            display: flex;
+            align-items: center;
+            div.line_area {
+              width: 1.5rem;
+              height: 2px;
+              margin: 0 0.75rem;
+              display: flex;
+              align-items: center;
+              span.line {
+                display: inline-block;
+                width: 70%;
+                height: 100%;
+                background: #cb9d70;
+                transition: 0.5s ease-in-out;
+              }
+            }
+            p {
+              font-size: 1.25rem;
+              font-weight: 400;
+              letter-spacing: 0.05rem;
+              transition: 0.5s ease-in-out;
+            }
+          }
+        }
+        //hover效果
+        article.carousel_item {
+          //直屬選擇器 A:hover > B
+          &:hover > div.carousel_text {
+            p {
+              color: #cb9d70;
+            }
+            div.line_area {
+              span.line {
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+    //   輪播scrollbar
+    .swiper-scrollbar {
+    }
   }
 }

@@ -816,7 +816,7 @@ main.menu {
   right: -100%;
 }
 main.menu .menu_container {
-  width: 98.9vw;
+  width: 100vw;
   height: 100vh;
   padding: 50px;
   background: url("../../img/slideMenu_BG.jpg");
@@ -1049,6 +1049,48 @@ div.fixed_booking a i {
   margin-left: 1.5rem;
 }
 
+@media screen and (max-width: 450px) {
+  main#menu .menu_container .top_btn_area {
+    max-height: 100px;
+    padding: 20px;
+  }
+  main#menu .menu_container .top_btn_area .left .closeBtn span {
+    display: none;
+  }
+  main#menu .menu_container .top_btn_area .left .logo a {
+    transform: scale(0.8);
+  }
+  main#menu .menu_container main {
+    max-height: 60vh;
+    padding: 20px 50px;
+  }
+  main#menu .menu_container main nav.menu_title {
+    width: 100%;
+    height: 100%;
+  }
+  main#menu .menu_container main nav.menu_title ol li {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    border-bottom: #b2b2b2 1px solid;
+  }
+  main#menu .menu_container main nav.menu_title ol li a {
+    padding: 0 1.5rem;
+  }
+  main#menu .menu_container main nav.menu_info {
+    display: none;
+  }
+  main#menu .menu_container main nav.menu_img {
+    display: none;
+  }
+  main#menu .menu_container .social_link {
+    display: block;
+  }
+  main#menu .menu_container .bookingBtn {
+    margin: 0 50px;
+    width: calc(100% - 100px);
+  }
+}
 @media screen and (max-width: 768px) {
   header div.top_header div.right {
     display: none;
@@ -1220,18 +1262,18 @@ div.fixed_booking a i {
     max-width: 1540px;
   }
 }
-.swiper {
+section.journey_area .swiper {
   z-index: 1;
   width: 90vw;
   height: auto;
 }
-.swiper .swiper-wrapper {
+section.journey_area .swiper .swiper-wrapper {
   height: 500px;
   width: 100%;
   display: flex;
   align-items: center;
 }
-.swiper .swiper-wrapper .swiper-slide {
+section.journey_area .swiper .swiper-wrapper .swiper-slide {
   height: 400px;
   overflow: hidden;
   display: flex;
@@ -1239,7 +1281,7 @@ div.fixed_booking a i {
   justify-content: center;
   transition: 0.5s ease-in-out;
 }
-.swiper .swiper-wrapper .swiper-slide a {
+section.journey_area .swiper .swiper-wrapper .swiper-slide a {
   height: auto;
   padding: 20px;
   display: block;
@@ -1250,39 +1292,101 @@ div.fixed_booking a i {
   background-position: center;
   background-repeat: no-repeat;
 }
-.swiper .swiper-wrapper .swiper-slide a div.journey_text {
+section.journey_area .swiper .swiper-wrapper .swiper-slide a div.journey_text {
   position: absolute;
   bottom: 0;
   color: white;
   padding: 1.75rem 1.5rem;
 }
-.swiper .swiper-wrapper .swiper-slide a div.journey_text div.text_top i {
+section.journey_area .swiper .swiper-wrapper .swiper-slide a div.journey_text div.text_top i {
   margin-right: 0.5rem;
 }
-.swiper .swiper-wrapper .swiper-slide a div.journey_text h4 {
+section.journey_area .swiper .swiper-wrapper .swiper-slide a div.journey_text h4 {
   font-size: 1.25rem;
   margin-top: 0.25rem;
 }
-.swiper .swiper-wrapper .swiper-slide a.swiper-img1 {
+section.journey_area .swiper .swiper-wrapper .swiper-slide a.swiper-img1 {
   background-image: url("../../img/twL_travel_24L11_I2m1zeTTfA.jpg");
 }
-.swiper .swiper-wrapper .swiper-slide a.swiper-img2 {
+section.journey_area .swiper .swiper-wrapper .swiper-slide a.swiper-img2 {
   background-image: url("../../img/twL_travel_24L11_DgYXKs55BM.jpg");
 }
-.swiper .swiper-wrapper .swiper-slide a.swiper-img3 {
+section.journey_area .swiper .swiper-wrapper .swiper-slide a.swiper-img3 {
   background-image: url("../../img/twL_travel_24L11_cQnCEuLeHv.jpg");
 }
-.swiper .swiper-wrapper .swiper-slide a.swiper-img4 {
+section.journey_area .swiper .swiper-wrapper .swiper-slide a.swiper-img4 {
   background-image: url("../../img/twL_travel_24L11_FJgEEw6yc2.jpg");
 }
-.swiper .swiper-wrapper .swiper-slide:hover {
+section.journey_area .swiper .swiper-wrapper .swiper-slide:hover {
   height: 450px;
 }
-.swiper .swiper-button-prev {
+section.journey_area .swiper .swiper-button-prev {
   color: #9a9a9a;
   font-size: 1.5rem;
 }
-.swiper .swiper-button-next {
+section.journey_area .swiper .swiper-button-next {
   color: #9a9a9a;
   font-size: 1.5rem;
+}
+
+section.carousel_area .carousel_Swiper {
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+}
+section.carousel_area .carousel_Swiper .swiper-wrapper {
+  margin-bottom: 100px;
+}
+section.carousel_area .carousel_Swiper .swiper-wrapper .swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+section.carousel_area .carousel_Swiper .swiper-wrapper .swiper-slide article.carousel_item {
+  margin: 0 1.5rem;
+  scroll-snap-align: start;
+  width: 100%;
+}
+section.carousel_area .carousel_Swiper .swiper-wrapper .swiper-slide article.carousel_item figure {
+  overflow: hidden;
+}
+section.carousel_area .carousel_Swiper .swiper-wrapper .swiper-slide article.carousel_item figure img {
+  transition: 0.5s ease-in-out;
+}
+section.carousel_area .carousel_Swiper .swiper-wrapper .swiper-slide article.carousel_item figure img:hover {
+  transform: scale(1.1);
+  filter: brightness(0.7);
+}
+section.carousel_area .carousel_Swiper .swiper-wrapper .swiper-slide article.carousel_item div.carousel_text {
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+section.carousel_area .carousel_Swiper .swiper-wrapper .swiper-slide article.carousel_item div.carousel_text div.line_area {
+  width: 1.5rem;
+  height: 2px;
+  margin: 0 0.75rem;
+  display: flex;
+  align-items: center;
+}
+section.carousel_area .carousel_Swiper .swiper-wrapper .swiper-slide article.carousel_item div.carousel_text div.line_area span.line {
+  display: inline-block;
+  width: 70%;
+  height: 100%;
+  background: #cb9d70;
+  transition: 0.5s ease-in-out;
+}
+section.carousel_area .carousel_Swiper .swiper-wrapper .swiper-slide article.carousel_item div.carousel_text p {
+  font-size: 1.25rem;
+  font-weight: 400;
+  letter-spacing: 0.05rem;
+  transition: 0.5s ease-in-out;
+}
+section.carousel_area .carousel_Swiper .swiper-wrapper .swiper-slide article.carousel_item:hover > div.carousel_text p {
+  color: #cb9d70;
+}
+section.carousel_area .carousel_Swiper .swiper-wrapper .swiper-slide article.carousel_item:hover > div.carousel_text div.line_area span.line {
+  width: 100%;
 }/*# sourceMappingURL=style.css.map */
